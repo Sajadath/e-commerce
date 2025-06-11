@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 
 function Navbar() {
   return (
-    <div className="sticky top-0 right-0 left-0 h-20 border-b-1 border-gray-100/50 bg-white/50 px-4 py-4 shadow-xs backdrop-blur-xs md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+    <nav className="sticky top-0 right-0 left-0 z-50 h-20 border-b-1 border-gray-100/50 bg-white/50 px-4 py-4 shadow-xs backdrop-blur-xs md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       {/* Mobile Navbar */}
       <div className="flex h-full items-center justify-between md:hidden">
         <Link href="/">
@@ -38,7 +38,7 @@ function Navbar() {
           <NavIcons />
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

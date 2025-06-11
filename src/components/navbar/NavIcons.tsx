@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CartCard from "./cart/CartCard";
+import { AnimatePresence } from "motion/react";
 
 function NavIcons() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -54,7 +55,7 @@ function NavIcons() {
           <div className="bg-lightred/30 absolute top-0 right-0 bottom-0 left-0 -z-10 animate-ping rounded-full"></div>
           2
         </div>
-        {isCartOpen && <CartCard />}
+        <AnimatePresence>{isCartOpen && <CartCard />}</AnimatePresence>
       </div>
     </div>
   );

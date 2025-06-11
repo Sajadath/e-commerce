@@ -20,10 +20,10 @@ function Menu() {
       <AnimatePresence>
         {openMenu && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-20 right-0 left-0 flex h-[calc(100vh-5rem)] flex-col items-center justify-center gap-8 bg-black/95 font-semibold text-white backdrop-blur-lg"
+            exit={{ opacity: 0, y: -100 }}
+            className="fixed top-20 right-0 left-0 z-100 flex h-[calc(100vh-5rem)] flex-col flex-wrap items-center justify-center gap-8 bg-black/95 font-semibold text-white backdrop-blur-lg"
           >
             <Link href="/">خانه</Link>
             <Link href="/about">فروشگاه</Link>

@@ -1,9 +1,13 @@
-import Slider from "@/components/Slider/Slider";
+import CategoryList from "@/components/homePage/category/CategoryList";
+import ProductList from "@/components/homePage/product/ProductList";
+import CustomCarousel from "@/components/homePage/slider/CustomCarousel";
 
 export default function HomePage() {
   return (
-    <div className="">
-      <Slider />
-    </div>
+    <main className="relative w-full overflow-x-hidden">
+      <CustomCarousel />
+      <ProductList />
+      <CategoryList />
+    </main>
   );
 }

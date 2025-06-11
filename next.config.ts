@@ -6,8 +6,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "encrypted-tbn0.gstatic.com",
-        port: "",
-        pathname: "/*", // Allow all paths under the hostname
+        pathname: "**", // Fixed wildcard for all paths
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
       },
     ],
   },

@@ -1,5 +1,5 @@
 function Footer() {
-  return <div className="">پاورقی</div>;
+  return <footer className="">پاورقی</footer>;
 }
 
 export default Footer;
