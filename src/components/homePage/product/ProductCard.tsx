@@ -5,14 +5,14 @@ function ProductCard() {
     <div>
       <Link href="/test" className="relative h-fit w-fit">
         <img
-          className="z-10 h-[250px] w-[400px] rounded-lg object-cover transition-all duration-700 hover:opacity-0"
+          className="z-10 h-[250px] w-[100%] rounded-lg object-cover transition-all duration-700 hover:opacity-0"
           src="/airpodGreen.webp"
           alt="product"
           width={400}
           height={250}
         />
         <img
-          className="absolute top-0 right-0 bottom-0 left-0 -z-1 h-[250px] w-[400px] rounded-lg object-cover"
+          className="absolute top-0 right-0 bottom-0 left-0 -z-1 h-[250px] w-[100%] rounded-lg object-cover"
           src="/airpodBlue.jpg"
           alt="product"
           width={400}

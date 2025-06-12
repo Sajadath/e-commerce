@@ -16,7 +16,7 @@ function SearchBar() {
     const formData = new FormData(event.currentTarget);
     const searchTerm = formData.get("searchBar") as string;
     if (searchTerm.trim()) {
-      router.push(`/list?name=${searchTerm}`);
+      router.push(`/search?name=${searchTerm}`);
     }
   }
 
@@ -46,23 +46,25 @@ function SearchBar() {
   }, [inputFocused]);
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSearch}
-      className={`relative flex w-60 justify-between gap-4 rounded-md bg-gray-100 p-2 transition-all duration-500 ${inputFocused ? "w-80 border border-black/20" : "border-none"}`}
-    >
-      <input
-        onFocus={() => setInputFocused(true)}
-        type="text"
-        name="searchBar"
-        className="grow outline-none"
-        id="searchBar"
-        placeholder="جستجو..."
-      />
-      <button className="absolute top-1/2 left-3 -translate-y-1/2 cursor-pointer">
-        <Image src="/search.png" alt="Search Button" width={16} height={16} />
-      </button>
-    </form>
+    <div className="grow px-9">
+      <form
+        ref={formRef}
+        onSubmit={handleSearch}
+        className={`relative rounded-md bg-gray-100 p-2 transition-all duration-500 ${inputFocused ? "w-full border border-black/20" : "w-[80%] border-none"}`}
+      >
+        <input
+          onFocus={() => setInputFocused(true)}
+          type="text"
+          name="searchBar"
+          className="w-full outline-none"
+          id="searchBar"
+          placeholder="جستجو..."
+        />
+        <button className="absolute top-1/2 left-3 -translate-y-1/2 cursor-pointer">
+          <Image src="/search.png" alt="Search Button" width={16} height={16} />
+        </button>
+      </form>
+    </div>
   );
 }
 

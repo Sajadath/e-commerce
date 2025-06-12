@@ -1,8 +1,9 @@
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import ToastProvider from "@/components/ui/ToastProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/Footer";
 
 const bYekan = localFont({ src: "./Iranyekan.ttf" });
 
@@ -26,7 +27,7 @@ export default function RootLayout({
         className={`${bYekan.className} grid min-h-dvh grid-rows-[auto_1fr_auto]`}
       >
         <Navbar />
-        {children}
+        <ToastProvider>{children}</ToastProvider>
         <Footer />
       </body>
     </html>

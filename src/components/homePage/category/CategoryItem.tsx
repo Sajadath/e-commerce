@@ -1,18 +1,27 @@
-import Link from "next/link";
+"use client";
+import { motion } from "framer-motion";
 
-function CategoryItem() {
-  return (
-    <div className="w-[20%] shrink-0 transition-all duration-300 hover:w-[30%]">
-      <Link className="w-full" href="/list?cat=test">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3CZ7vNjpzpeYouT1R1LEu5CQe5aBAH-_9zw&s"
-          alt="Category Image"
-          className="h-90 w-full rounded-xl object-cover transition-all duration-300"
-        />
-      </Link>
-      <h2 className="text-center font-semibold">نام دسته بندی</h2>
-    </div>
-  );
+interface CategoryItemProps {
+  title: string;
+  children: React.ReactNode;
+  bg: string;
 }
+
+const CategoryItem = ({ title, children, bg }: CategoryItemProps) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      className="cursor-pointer"
+    >
+      <div
+        className={`relative flex flex-col items-center justify-center rounded-2xl border border-gray-200 shadow-lg ${bg} p-10 shadow`}
+      >
+        {children}
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
+      </div>
+    </motion.div>
+  );
+};
 
 export default CategoryItem;
