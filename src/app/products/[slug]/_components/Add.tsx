@@ -2,7 +2,6 @@
 
 import { convertToPersianNumber } from "@/helperFunctions/stringToPersianNumbers";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const stock = 5;
 
@@ -15,12 +14,11 @@ function Add() {
         <div className="flex items-center gap-4">
           <div className="flex w-32 items-center justify-between rounded-3xl bg-gray-100">
             <button
-              className="cursor-pointer rounded-full p-4 text-xl"
+              disabled={quantity === 1}
+              className="cursor-pointer rounded-full p-4 text-xl disabled:opacity-20"
               onClick={() => {
                 if (quantity > 1) {
                   setQuantity((prev) => prev - 1);
-                } else {
-                  toast.error(" کمترین تعداد یک عدد است");
                 }
               }}
             >
@@ -28,12 +26,11 @@ function Add() {
             </button>
             {quantity}
             <button
-              className="cursor-pointer rounded-full p-4 text-xl"
+              disabled={quantity === stock}
+              className="cursor-pointer rounded-full p-4 text-xl disabled:opacity-20"
               onClick={() => {
                 if (quantity + 1 <= stock) {
                   setQuantity((prev) => prev + 1);
-                } else {
-                  toast.error(" بیشتر از این تعداد در انبار موجود نیست ");
                 }
               }}
             >

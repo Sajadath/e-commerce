@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "images.pexels.com",
+        hostname: "static.wixstatic.com",
+        pathname: "**", // Fixed wildcard for all paths
       },
     ],
   },

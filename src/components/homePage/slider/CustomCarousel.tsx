@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 interface Slide {
@@ -12,22 +13,19 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    backgroundImage:
-      "http://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress",
+    backgroundImage: "/slider3.jpeg",
     asideBg: "bg-gradient-to-tr from-pink-50 to-blue-50",
     title: "کیفیتی تکرار نشدنی",
   },
   {
     id: 2,
-    backgroundImage:
-      "http://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress",
+    backgroundImage: "/slider2.jpeg",
     asideBg: "bg-gradient-to-tr from-blue-50 to-yellow-50",
     title: "تجربه ای طلایی از خرید",
   },
   {
     id: 3,
-    backgroundImage:
-      "http://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress",
+    backgroundImage: "/slider1.jpeg",
     asideBg: "bg-gradient-to-tr from-yellow-50 to-pink-50",
     title: "هرمدلی واسه هر استایلی",
   },
@@ -78,15 +76,17 @@ const CustomCarousel: React.FC = () => {
               } flex border-gray-200/20 transition-all duration-700`}
             >
               <div
-                className={`transition-all ${currentSlide !== index && "cursor-pointer"} duration-700 ${
+                className={`relative transition-all ${currentSlide !== index && "cursor-pointer"} duration-700 ${
                   isActive ? "w-1/2" : "w-full"
                 }`}
               >
-                <img
+                <Image
                   onClick={() => {
                     clearAndSetInterval();
                     if (currentSlide !== index) setCurrentSlide(index);
                   }}
+                  fill
+                  style={{ objectFit: "cover" }}
                   className="h-full w-full object-cover"
                   src={slide.backgroundImage}
                   alt={`Slide ${slide.id}`}

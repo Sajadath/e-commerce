@@ -4,6 +4,7 @@ import ToastProvider from "@/components/ui/ToastProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { WixClientContextProvider } from "@/context/WixContext";
 
 const bYekan = localFont({ src: "./Iranyekan.ttf" });
 
@@ -26,9 +27,11 @@ export default function RootLayout({
         dir="rtl"
         className={`${bYekan.className} grid min-h-dvh grid-rows-[auto_1fr_auto]`}
       >
-        <Navbar />
-        <ToastProvider>{children}</ToastProvider>
-        <Footer />
+        <WixClientContextProvider>
+          <Navbar />
+          <ToastProvider>{children}</ToastProvider>
+          <Footer />
+        </WixClientContextProvider>
       </body>
     </html>
   );

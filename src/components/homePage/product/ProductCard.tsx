@@ -1,30 +1,58 @@
+import { convertToPersianNumber } from "@/helperFunctions/stringToPersianNumbers";
+import Image from "next/image";
 import Link from "next/link";
 
-function ProductCard() {
+type ProductCardProps = {
+  slug?: string;
+  productName?: string | null;
+  price?: number | null;
+  primaryImageUrl?: string;
+  shortDescription?: string | null;
+};
+
+function ProductCard({
+  slug,
+  productName,
+  price,
+  primaryImageUrl,
+  shortDescription,
+}: ProductCardProps) {
+  console.log(primaryImageUrl);
+
   return (
     <div>
-      <Link href="/test" className="relative h-fit w-fit">
-        <img
-          className="z-10 h-[250px] w-[100%] rounded-lg object-cover transition-all duration-700 hover:opacity-0"
-          src="/airpodGreen.webp"
-          alt="product"
-          width={400}
-          height={250}
-        />
-        <img
-          className="absolute top-0 right-0 bottom-0 left-0 -z-1 h-[250px] w-[100%] rounded-lg object-cover"
-          src="/airpodBlue.jpg"
-          alt="product"
-          width={400}
-          height={250}
-        />
+      <Link
+        href={`/products/${slug}`}
+        className="relative w-full overflow-hidden"
+      >
+        <div className="h-[250px] overflow-hidden rounded-lg bg-gray-200">
+          {primaryImageUrl ? (
+            <Image
+              className="z-10 h-[250px] w-[100%] rounded-lg object-cover transition-all duration-400 hover:scale-125"
+              src={primaryImageUrl}
+              alt={` تصویر اول  ${productName || "محصول"}`}
+              width={400}
+              height={250}
+            />
+          ) : (
+            <Image
+              className="z-10 h-[250px] w-[100%] rounded-lg object-cover transition-all duration-400 hover:scale-125"
+              src="/product.png"
+              alt={` تصویر اول  ${productName || "محصول"}`}
+              width={400}
+              height={250}
+            />
+          )}
+        </div>
       </Link>
       <div className="flex justify-between px-2 py-3">
-        <span>نام محصول</span>
-        <span className="font-semibold">قیمت </span>
+        <span>{productName || "محصول"}</span>
+        <span className="font-semibold">
+          {(price && convertToPersianNumber(price)) || "-"} تومان
+        </span>
       </div>
       <div className="p-1">
-        <span className="text-sm text-gray-500">توضیحات محصول</span>
+        <span className="text-sm text-gray-500">{shortDescription || ""}</span>
       </div>
       <div className="flex justify-end py-2">
         <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-3 py-1 text-sm hover:text-white">
