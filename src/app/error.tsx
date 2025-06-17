@@ -15,6 +15,7 @@ export default function Error({
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
+    console.log(error.stack);
   }, [error]);
 
   return (
@@ -22,6 +23,7 @@ export default function Error({
       <h2 className="font-bold">
         {convertToPersianNumber("404")} چیزی اشتباه شد :(
       </h2>
+      <h3 dir="ltr">{error.message}</h3>
       <button
         onMouseEnter={() => setButtonIsFocuse(true)}
         onMouseLeave={() => setButtonIsFocuse(false)}

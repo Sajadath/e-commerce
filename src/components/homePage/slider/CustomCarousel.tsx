@@ -101,12 +101,12 @@ const CustomCarousel: React.FC = () => {
                   <h2 className="text-md font-bold text-nowrap text-[#3a4445]/50 md:text-xl lg:text-2xl">
                     {slide.title}
                   </h2>
-                  <div className="flex items-center">
-                    <div className="h-1 w-4 bg-black"></div>
-                    <button className="z-20 mx-auto flex w-fit cursor-pointer items-center gap-2 rounded-2xl border-2 border-black bg-black px-6 py-2 text-center text-white hover:bg-transparent hover:text-black">
+                  <div className="mx-auto flex items-center gap-3">
+                    <div className="h-0.5 w-8 bg-gradient-to-r from-black via-black/30 to-transparent" />
+                    <button className="z-20 flex w-fit cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 border-black bg-transparent px-6 py-1 text-center text-black transition duration-300 hover:bg-black hover:text-white">
                       <h2>خرید</h2>
                     </button>
-                    <div className="h-1 w-4 bg-black"></div>
+                    <div className="h-0.5 w-8 bg-gradient-to-r from-transparent via-black/30 to-black" />
                   </div>
                 </div>
               </div>

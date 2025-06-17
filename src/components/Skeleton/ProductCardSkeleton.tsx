@@ -17,9 +17,7 @@ function ProductCardSkeleton() {
           <Skeleton count={1} />
         </h1>
       </div>
-      <div className="w-full p-1">
-        <Skeleton count={1} className="h-full" />
-      </div>
+
       <div className="flex justify-end py-2">
         <button
           disabled

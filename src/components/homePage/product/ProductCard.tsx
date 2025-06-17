@@ -7,7 +7,6 @@ type ProductCardProps = {
   productName?: string | null;
   price?: number | null;
   primaryImageUrl?: string;
-  shortDescription?: string | null;
 };
 
 function ProductCard({
@@ -15,10 +14,7 @@ function ProductCard({
   productName,
   price,
   primaryImageUrl,
-  shortDescription,
 }: ProductCardProps) {
-  console.log(primaryImageUrl);
-
   return (
     <div>
       <Link
@@ -47,13 +43,18 @@ function ProductCard({
       </Link>
       <div className="flex justify-between px-2 py-3">
         <span>{productName || "محصول"}</span>
-        <span className="font-semibold">
-          {(price && convertToPersianNumber(price)) || "-"} تومان
+        <span className="flex items-center justify-center gap-1 font-semibold">
+          {(price && convertToPersianNumber(price)) || "-"}{" "}
+          <Image
+            src="/toman.svg"
+            alt="تومان"
+            width={25}
+            height={25}
+            className="ml-1 inline-block"
+          />
         </span>
       </div>
-      <div className="p-1">
-        <span className="text-sm text-gray-500">{shortDescription || ""}</span>
-      </div>
+
       <div className="flex justify-end py-2">
         <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-3 py-1 text-sm hover:text-white">
           افزودن به سبد خرید

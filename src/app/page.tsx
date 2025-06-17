@@ -2,6 +2,7 @@ import CategoryList from "@/components/homePage/category/CategoryList";
 import NewestProducts from "@/components/homePage/product/NewestProduct";
 import SpecialProductList from "@/components/homePage/product/SpecialProductList";
 import CustomCarousel from "@/components/homePage/slider/CustomCarousel";
+import NewestProductSkeletons from "@/components/Skeleton/NewestProductSkeleton";
 import SpecialProductSkeletons from "@/components/Skeleton/SpecialProductSkeletons";
 import { Suspense } from "react";
 
@@ -30,13 +31,12 @@ export default async function HomePage() {
       <CustomCarousel />
 
       <Suspense fallback={<SpecialProductSkeletons />}>
-        <SpecialProductList
-          categoryId={process.env.SPECIAL_PRODUCTS_CATEGORY_ID!}
-          limit={4}
-        />
+        <SpecialProductList limit={4} />
       </Suspense>
       <CategoryList />
-      <NewestProducts />
+      <Suspense fallback={<NewestProductSkeletons />}>
+        <NewestProducts limit={4} />
+      </Suspense>
     </main>
   );
 }

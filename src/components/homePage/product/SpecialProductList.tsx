@@ -1,24 +1,19 @@
-import { wixClientServer } from "@/lib/wixClientServer";
+import { wixClientServerVisitors } from "@/lib/wixClientServerVisitors";
 import ProductCard from "./ProductCard";
 
-const PRODUCT_PER_PAGE = 20;
-
-async function SpecialProductList({
-  categoryId,
-  limit,
-}: {
-  categoryId: string;
-  limit?: number;
-}) {
-  const wixClient = await wixClientServer();
+async function SpecialProductList({ limit }: { limit?: number }) {
+  const PRODUCT_PER_PAGE = Number(process.env.PRODUCT_PER_PAGE);
+  const categoryId = process.env.SPECIAL_PRODUCTS_CATEGORY_ID!;
+  const wixClient = await wixClientServerVisitors();
 
   const res = await wixClient.products
     .queryProducts()
     .eq("collectionIds", categoryId)
     .limit(limit ?? PRODUCT_PER_PAGE)
     .find();
-  const products = res.items;
-  console.log(products);
+
+  console.log(res);
+  const products = res?.items;
 
   return (
     <>
@@ -26,7 +21,7 @@ async function SpecialProductList({
         محصولات ویژه
       </h2>
       <div className="grid grid-cols-1 gap-x-8 gap-y-16 px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-16 xl:px-32 2xl:grid-cols-4 2xl:px-64">
-        {products.length > 0 ? (
+        {products?.length > 0 ? (
           products.map((product) => (
             <ProductCard
               key={product.numericId}
@@ -34,11 +29,6 @@ async function SpecialProductList({
               productName={product?.name}
               price={product?.priceData?.price}
               primaryImageUrl={product?.media?.mainMedia?.image?.url}
-              shortDescription={
-                product?.additionalInfoSections?.find(
-                  (section) => section.title === "Short Description",
-                )?.description || ""
-              }
             />
           ))
         ) : (
