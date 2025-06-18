@@ -30,11 +30,11 @@ export default async function HomePage() {
     <main className="relative w-full overflow-x-hidden">
       <CustomCarousel />
 
-      <Suspense fallback={<SpecialProductSkeletons />}>
+      <Suspense fallback={<SpecialProductSkeletons limit={4} />}>
         <SpecialProductList limit={4} />
       </Suspense>
       <CategoryList />
-      <Suspense fallback={<NewestProductSkeletons />}>
+      <Suspense fallback={<NewestProductSkeletons limit={4} />}>
         <NewestProducts limit={4} />
       </Suspense>
     </main>

@@ -3,10 +3,17 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import useGlobalUiStore from "@/stores/globalUiStore";
+const NavBarFocusedEffect = dynamic(() => import("./NavBarFocusedEffect"), {
+  ssr: false,
+});
 
 function SearchBar() {
   const [inputFocused, setInputFocused] = useState(false);
-
+  const setSearchBarFocused = useGlobalUiStore(
+    (state) => state.setSearchBarFocused,
+  );
   const router = useRouter();
 
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -21,8 +28,12 @@ function SearchBar() {
   }
 
   useEffect(() => {
-    function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") {
+    function handleFocusOut(event: KeyboardEvent) {
+      if (
+        event.key === "Escape" ||
+        event.key === "Esc" ||
+        event.key === "Enter"
+      ) {
         setInputFocused(false);
       }
     }
@@ -37,13 +48,17 @@ function SearchBar() {
     }
     if (inputFocused) {
       document.addEventListener("click", handleClickOutSide);
-      document.addEventListener("keydown", handleEscape);
+      document.addEventListener("keydown", handleFocusOut);
     }
     return () => {
       document.removeEventListener("click", handleClickOutSide);
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleFocusOut);
     };
   }, [inputFocused]);
+
+  useEffect(() => {
+    setSearchBarFocused(inputFocused);
+  }, [inputFocused, setSearchBarFocused]);
 
   return (
     <div className="grow px-9">
@@ -64,6 +79,7 @@ function SearchBar() {
           <Image src="/search.png" alt="Search Button" width={16} height={16} />
         </button>
       </form>
+      <NavBarFocusedEffect />
     </div>
   );
 }
