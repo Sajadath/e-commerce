@@ -6,7 +6,7 @@ import NewestProductSkeletons from "@/components/Skeleton/NewestProductSkeleton"
 import SpecialProductSkeletons from "@/components/Skeleton/SpecialProductSkeletons";
 import { Suspense } from "react";
 
-// export const revalidate = 20;
+export const revalidate = 20;
 // import { useWixClient } from "./hooks/useWixClient";
 // import { wixClientServer } from "@/lib/wixClientServer";
 
