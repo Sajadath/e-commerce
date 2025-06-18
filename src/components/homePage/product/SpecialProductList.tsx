@@ -12,7 +12,6 @@ async function SpecialProductList({ limit }: { limit?: number }) {
     .limit(limit ?? PRODUCT_PER_PAGE)
     .find();
 
-  console.log(res);
   const products = res?.items;
 
   return (
