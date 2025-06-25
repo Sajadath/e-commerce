@@ -37,17 +37,19 @@ function Add() {
               +
             </button>
           </div>
-          <div className="text-xs">
-            فقط{" "}
-            <span className="px-1 text-orange-500">
-              {convertToPersianNumber("5")} عدد
-            </span>
-            در انبار موجود است
-          </div>
         </div>
+
         <button className="ring-lightred text-lightred hover:bg-lightred w-36 cursor-pointer rounded-3xl bg-transparent px-4 py-2 text-sm ring-1 transition-all duration-300 hover:text-white active:translate-y-1 disabled:bg-pink-200 disabled:text-white disabled:opacity-70 disabled:ring-0">
           اضافه به سبد خرید
         </button>
+      </div>
+
+      <div className="py-2 text-center text-xs">
+        فقط{" "}
+        <span className="px-1 text-orange-500">
+          {convertToPersianNumber("5")} عدد
+        </span>
+        در انبار موجود است
       </div>
     </div>
   );

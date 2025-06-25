@@ -7,7 +7,7 @@ import ProductHeading from "./_components/ProductHeading";
 
 function ProductDetail() {
   return (
-    <section className="flex w-full flex-col gap-6 px-6 pt-6 lg:w-1/2 lg:pt-18">
+    <section className="flex w-full flex-col gap-6 px-3 pt-6 lg:w-1/2 lg:pt-18">
       <ProductHeading />
       <StyledLine />
       <PriceBlock />

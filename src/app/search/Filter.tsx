@@ -50,19 +50,6 @@ function Filter() {
           ]}
         />
       </div>
-      <div>
-        <FilterSelect
-          transparent
-          selectFor="sort"
-          label="مرتب سازی"
-          options={[
-            { value: "highToLow", label: "زیاد به کم" },
-            { value: "lowToHigh", label: "کم به زیاد" },
-            { value: "newest", label: "جدیدترین" },
-            { value: "oldest", label: "قدیمی ترین" },
-          ]}
-        />
-      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ function Campaign() {
   return (
     <div className="flex h-fit flex-row-reverse justify-between rounded-lg bg-gradient-to-r from-pink-50 to-pink-200 px-4 xl:h-64">
       <div className="flex w-2/3 flex-col items-center justify-center gap-8 py-3">
-        <h1 className="text-xl leading-[48px] font-semibold text-gray-500 sm:text-3xl">
+        <h1 className="[37] text-sm leading-[48px] font-semibold text-gray-500 sm:text-3xl">
           تا{" "}
           <span className="text-lightred text-2xl font-bold sm:text-4xl">
             {convertToPersianNumber("50")}%
@@ -21,7 +21,7 @@ function Campaign() {
           src="/woman.png"
           alt="campaing banner"
           fill
-          className="object-contain"
+          className="object-cover sm:object-contain"
         />
       </div>
     </div>

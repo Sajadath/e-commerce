@@ -61,7 +61,7 @@ function SearchBar() {
   }, [inputFocused, setSearchBarFocused]);
 
   return (
-    <div className="grow px-9">
+    <div className="grow px-4 text-xs md:px-9 md:text-sm">
       <form
         ref={formRef}
         onSubmit={handleSearch}

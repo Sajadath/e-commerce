@@ -10,7 +10,7 @@ function Navbar() {
       {/* Mobile Navbar */}
       <div className="flex h-full items-center justify-between md:hidden">
         <Link href="/">
-          <h1 className="text-2xl tracking-wide">SHOPPER</h1>
+          <h1 className="text-lg tracking-wide">SHOPPER</h1>
         </Link>
         <SearchBar />
         <Menu />
