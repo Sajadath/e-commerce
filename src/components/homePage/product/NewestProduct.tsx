@@ -5,12 +5,28 @@ async function NewestProducts({ limit }: { limit?: number }) {
   const PRODUCT_PER_PAGE = Number(process.env.PRODUCT_PER_PAGE);
   const categoryId = process.env.NEWEST_PRODUCTS_CATEGORY_ID!;
   const wixClient = await wixClientServerVisitors();
+  let res;
+  try {
+    res = await wixClient.products
+      .queryProducts()
+      .eq("collectionIds", categoryId)
+      .limit(limit ?? PRODUCT_PER_PAGE)
+      .find();
+  } catch (error) {
+    console.error("Error fetching newest products:", error);
+    console.log("error fetching newest Products", error);
 
-  const res = await wixClient.products
-    .queryProducts()
-    .eq("collectionIds", categoryId)
-    .limit(limit ?? PRODUCT_PER_PAGE)
-    .find();
+    return (
+      <div className="mx-auto my-5 w-full border-b-2 border-red-500 bg-red-300/50 px-10 py-15 text-center">
+        <p className="w-full text-2xl font-semibold">
+          خطا در بارگذاری محصولات تازه
+        </p>
+        {error instanceof Error &&
+          "message" in error &&
+          (error.message as string)}
+      </div>
+    );
+  }
 
   const products = res?.items;
   return (

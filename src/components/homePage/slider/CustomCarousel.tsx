@@ -13,9 +13,9 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    backgroundImage: "/slider3.jpeg",
-    asideBg: "bg-gradient-to-tr from-pink-50 to-blue-50",
-    title: "کیفیتی تکرار نشدنی",
+    backgroundImage: "/slider1.jpeg",
+    asideBg: "bg-gradient-to-tr from-yellow-50 to-pink-50",
+    title: "هرمدلی واسه هر استایلی",
   },
   {
     id: 2,
@@ -23,11 +23,12 @@ const slides: Slide[] = [
     asideBg: "bg-gradient-to-tr from-blue-50 to-yellow-50",
     title: "تجربه ای طلایی از خرید",
   },
+
   {
     id: 3,
-    backgroundImage: "/slider1.jpeg",
-    asideBg: "bg-gradient-to-tr from-yellow-50 to-pink-50",
-    title: "هرمدلی واسه هر استایلی",
+    backgroundImage: "/slider3.jpeg",
+    asideBg: "bg-gradient-to-tr from-pink-50 to-blue-50",
+    title: "کیفیتی تکرار نشدنی",
   },
 ];
 
@@ -35,20 +36,40 @@ const CustomCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
 
+  function nextSlide() {
+    setCurrentSlide((prev) => {
+      if (prev === slides.length - 1) {
+        return 0;
+      } else {
+        return prev + 1;
+      }
+    });
+  }
+
+  function previousSlide() {
+    setCurrentSlide((prev) => {
+      if (prev === 0) {
+        return slides.length - 1;
+      } else {
+        return prev - 1;
+      }
+    });
+  }
+
   const clearAndSetInterval = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      nextSlide();
     }, 3000);
   };
 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    nextSlide();
     clearAndSetInterval();
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    previousSlide();
     clearAndSetInterval();
   };
 
@@ -60,7 +81,10 @@ const CustomCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative flex h-[calc(100dvh-80px)] w-full items-center justify-center overflow-hidden">
+    <div
+      dir="ltr"
+      className="relative flex h-[calc(100dvh-80px)] w-full items-center justify-center overflow-hidden"
+    >
       <div className="flex h-full w-full flex-col lg:flex-row">
         {slides.map((slide, index) => {
           const isActive = index === currentSlide;
@@ -117,13 +141,14 @@ const CustomCarousel: React.FC = () => {
 
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 right-2 cursor-pointer rounded-full bg-black/20 p-4 text-white backdrop-blur-[2px] transition-all duration-500 hover:bg-black/50"
+        className="absolute top-1/2 left-2 cursor-pointer rounded-full bg-black/20 p-4 text-white backdrop-blur-[2px] transition-all duration-500 hover:bg-black/50"
       >
         &lt;
       </button>
+
       <button
         onClick={handleNext}
-        className="absolute top-1/2 left-2 cursor-pointer rounded-full bg-black/20 p-4 text-white backdrop-blur-[2px] transition-all duration-500 hover:bg-black/50"
+        className="absolute top-1/2 right-2 cursor-pointer rounded-full bg-black/20 p-4 text-white backdrop-blur-[2px] transition-all duration-500 hover:bg-black/50"
       >
         &gt;
       </button>

@@ -1,4 +1,5 @@
 export default function Loading() {
-  // Or a custom loading skeleton component
-  return <p>Loading...</p>;
+  return (
+    <p className="text-lightred py-10 text-center text-lg">درحال بارگزاری</p>
+  );
 }
