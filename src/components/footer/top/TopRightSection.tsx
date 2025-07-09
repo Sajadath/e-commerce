@@ -19,7 +19,7 @@ function TopRightSection() {
             placeholder="ایمیل"
             className="w-3/4 bg-white p-4"
           />
-          <button className="bg-lightred block w-1/4 cursor-pointer rounded-l-lg text-white">
+          <button className="bg-lightred block w-1/4 cursor-pointer rounded-l-lg text-white active:bg-emerald-300">
             ملحق شدن
           </button>
         </form>

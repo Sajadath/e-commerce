@@ -34,10 +34,11 @@ async function NewestProducts({ limit }: { limit?: number }) {
       <h2 className="mt-10 px-4 py-14 text-2xl font-semibold md:px-8 lg:px-16 xl:px-32 2xl:px-64">
         محصولات تازه
       </h2>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-16 px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-16 xl:px-32 2xl:grid-cols-4 2xl:px-64">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-16 overflow-hidden px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-16 xl:px-32 2xl:grid-cols-4 2xl:px-64">
         {products?.length > 0 ? (
-          products.map((product) => (
+          products.map((product, index) => (
             <ProductCard
+              delay={index * 0.2}
               key={product.numericId}
               slug={product?.slug}
               productName={product?.name}

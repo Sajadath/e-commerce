@@ -1,5 +1,7 @@
 export default function Loading() {
   return (
-    <p className="text-lightred py-10 text-center text-lg">درحال بارگزاری</p>
+    <div className="relative h-70">
+      <div className="loader absolute top-1/2 left-1/2 -translate-1/2"></div>
+    </div>
   );
 }

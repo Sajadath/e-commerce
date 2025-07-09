@@ -1,9 +1,13 @@
 import FilterSelect from "./FilterSelect";
 
-function Heading() {
+interface HeadingProps {
+  searchTitle: string;
+}
+
+async function Heading({ searchTitle }: HeadingProps) {
   return (
     <div className="flex items-center justify-between">
-      <h2 className="my-8 text-xl font-semibold"> کفش های شما </h2>
+      <h2 className="my-8 text-xl font-semibold"> {searchTitle} </h2>
       <div>
         <FilterSelect
           transparent

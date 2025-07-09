@@ -25,7 +25,7 @@ function Navbar() {
             <Image src="/logo.png" alt="Logo" width={24} height={24} />
             <div className="text-2xl tracking-wide">SHOPPER</div>
           </Link>
-          <div className="hidden gap-4 xl:flex">
+          <div className="hidden gap-4 text-nowrap xl:flex">
             <Link href="/">خانه</Link>
             <Link href="/shop">فروشگاه</Link>
             <Link href="/deals">تخفیف‌ها</Link>

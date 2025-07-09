@@ -1,34 +1,25 @@
-import { Bus, GraduationCap, Hamburger, ScanHeart, Shirt } from "lucide-react";
+import { wixClientServerVisitors } from "@/lib/wixClientServerVisitors";
 import CategoryItem from "./CategoryItem";
 
-function CategoryList() {
-  const categories = [
-    {
-      title: "پوشاک",
-      Icon: Shirt,
-      bg: "bg-gradient-to-br from-purple-600  to-purple-400",
-    },
-    {
-      title: "سلامت",
-      Icon: ScanHeart,
-      bg: "bg-gradient-to-br from-green-600 to-green-400",
-    },
-    {
-      title: "سفر",
-      Icon: Bus,
-      bg: "bg-gradient-to-br from-sky-600 to-sky-400",
-    },
-    {
-      title: "آموزش",
-      Icon: GraduationCap,
-      bg: "bg-gradient-to-br from-yellow-600 to-yellow-400",
-    },
-    {
-      title: "غذا",
-      Icon: Hamburger,
-      bg: "bg-gradient-to-br from-red-600 to-red-400",
-    },
-  ];
+async function CategoryList() {
+  const wixClient = await wixClientServerVisitors();
+  let categories;
+  try {
+    const res = await wixClient.collections.queryCollections().find();
+    categories = res.items.slice(1, 6);
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return (
+      <div className="mx-auto my-5 w-full border-b-2 border-red-500 bg-red-300/50 px-10 py-15 text-center">
+        <p className="w-full text-2xl font-semibold">
+          خطا در بارگذاری دسته بندی ها
+        </p>
+        {error instanceof Error &&
+          "message" in error &&
+          (error.message as string)}
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-hidden">
@@ -36,14 +27,20 @@ function CategoryList() {
         دسته بندی محصولات
       </h2>
       <div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-        {categories.map((category, index) => (
-          <CategoryItem key={index} title={category.title} bg={category.bg}>
-            <category.Icon
-              className="absolute -bottom-3 -left-3 rotate-12 text-white"
-              size={90}
-            />
-          </CategoryItem>
-        ))}
+        {categories.length > 0 &&
+          categories.map((category, index) => (
+            <CategoryItem
+              key={index}
+              delay={index * 0.2}
+              title={category.name!}
+              imgUrl={category?.media?.mainMedia?.image?.url}
+              slug={category.slug!}
+            >
+              <h3 className="absolute -bottom-3 -left-3 rotate-12 text-white">
+                {category.numberOfProducts}
+              </h3>
+            </CategoryItem>
+          ))}
       </div>
     </div>
   );

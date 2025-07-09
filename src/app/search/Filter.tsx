@@ -2,7 +2,7 @@ import FilterSelect from "./FilterSelect";
 
 function Filter() {
   return (
-    <div className="mt-12 flex justify-between">
+    <div className="my-8 flex justify-between">
       <div className="flex flex-wrap gap-6">
         <FilterSelect
           selectFor="category"

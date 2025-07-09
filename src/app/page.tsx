@@ -2,11 +2,11 @@ import CategoryList from "@/components/homePage/category/CategoryList";
 import NewestProducts from "@/components/homePage/product/NewestProduct";
 import SpecialProductList from "@/components/homePage/product/SpecialProductList";
 import CustomCarousel from "@/components/homePage/slider/CustomCarousel";
+import CategoryListSkeleton from "@/components/Skeleton/CategoryListSkeleton";
 import NewestProductSkeletons from "@/components/Skeleton/NewestProductSkeleton";
 import SpecialProductSkeletons from "@/components/Skeleton/SpecialProductSkeletons";
 import { Suspense } from "react";
-
-export const revalidate = 20;
+export const revalidate = 0;
 // import { useWixClient } from "./hooks/useWixClient";
 // import { wixClientServer } from "@/lib/wixClientServer";
 
@@ -33,7 +33,10 @@ export default async function HomePage() {
       <Suspense fallback={<SpecialProductSkeletons limit={4} />}>
         <SpecialProductList limit={4} />
       </Suspense>
-      <CategoryList />
+
+      <Suspense fallback={<CategoryListSkeleton count={5} />}>
+        <CategoryList />
+      </Suspense>
       <Suspense fallback={<NewestProductSkeletons limit={4} />}>
         <NewestProducts limit={4} />
       </Suspense>
