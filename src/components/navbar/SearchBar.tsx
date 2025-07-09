@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import { FormEvent, useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import useGlobalUiStore from "@/stores/globalUiStore";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useRef, useState } from "react";
 const NavBarFocusedEffect = dynamic(() => import("./NavBarFocusedEffect"), {
   ssr: false,
 });
