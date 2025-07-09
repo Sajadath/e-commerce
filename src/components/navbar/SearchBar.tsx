@@ -24,6 +24,7 @@ function SearchBar() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const searchTerm = formData.get("searchBar") as string;
+    setInputFocused(false);
     if (searchTerm.trim()) {
       router.push(`/search?productName=${searchTerm}`);
     }
