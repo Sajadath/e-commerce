@@ -74,7 +74,7 @@ function ProductCard({
         <span className="flex h-fit items-center justify-center gap-1 py-2 text-sm font-semibold">
           {(price && convertToPersianNumber(price)) || "-"} <ToomanIcon />
         </span>
-        <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-3 py-1 text-xs hover:text-white">
+        <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-2 py-0.5 text-xs hover:text-white">
           افزودن به سبد خرید
         </button>
       </div>

@@ -12,7 +12,7 @@ export default async function SearchPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const wixClient = await wixClientServerVisitors();
-  const { categorySlug, searchTitle } = await searchParams;
+  const { categorySlug, searchTitle, productName } = await searchParams;
   let categoryId: string | null | undefined;
 
   if (categorySlug) {
@@ -43,7 +43,13 @@ export default async function SearchPage({
     <main className="w-full px-4 py-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       <Campaign />
       <Filter />
-      {searchTitle && <Heading searchTitle={searchTitle as string} />}
+      <Heading
+        searchTitle={
+          (searchTitle as string) ||
+          (productName as string) ||
+          "جستجو در محصولات"
+        }
+      />
       {categorySlug && categoryId ? (
         <Suspense fallback={<SearchInProductsSkeleton />}>
           <SearchInProducts categoryId={categoryId} />
@@ -55,6 +61,11 @@ export default async function SearchPage({
             <h2> دسته بندی محصولات یافت نشد</h2>
           </div>
         )
+      )}
+      {productName && (
+        <Suspense fallback={<SearchInProductsSkeleton />}>
+          <SearchInProducts productName={productName as string} />
+        </Suspense>
       )}
     </main>
   );

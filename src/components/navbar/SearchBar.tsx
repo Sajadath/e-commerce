@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import useGlobalUiStore from "@/stores/globalUiStore";
@@ -11,10 +11,13 @@ const NavBarFocusedEffect = dynamic(() => import("./NavBarFocusedEffect"), {
 
 function SearchBar() {
   const [inputFocused, setInputFocused] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const productNameSearch = searchParams.get("productName") || "";
   const setSearchBarFocused = useGlobalUiStore(
     (state) => state.setSearchBarFocused,
   );
-  const router = useRouter();
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -23,7 +26,7 @@ function SearchBar() {
     const formData = new FormData(event.currentTarget);
     const searchTerm = formData.get("searchBar") as string;
     if (searchTerm.trim()) {
-      router.push(`/search?name=${searchTerm}`);
+      router.push(`/search?productName=${searchTerm}`);
     }
   }
 
@@ -71,6 +74,7 @@ function SearchBar() {
           onFocus={() => setInputFocused(true)}
           type="text"
           name="searchBar"
+          defaultValue={productNameSearch}
           className="w-full outline-none"
           id="searchBar"
           placeholder="جستجو..."

@@ -1,7 +1,7 @@
 import FilterSelect from "./FilterSelect";
 
 interface HeadingProps {
-  searchTitle: string;
+  searchTitle?: string;
 }
 
 async function Heading({ searchTitle }: HeadingProps) {
