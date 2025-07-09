@@ -12,9 +12,9 @@ const NavBarFocusedEffect = dynamic(() => import("./NavBarFocusedEffect"), {
 function SearchBar() {
   const [inputFocused, setInputFocused] = useState(false);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const productNameSearch = searchParams.get("productName") || "";
+  const productNameSearch =
+    new URLSearchParams(window.location.search).get("productName") || "";
   const setSearchBarFocused = useGlobalUiStore(
     (state) => state.setSearchBarFocused,
   );
