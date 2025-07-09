@@ -13,8 +13,7 @@ function SearchBar() {
   const [inputFocused, setInputFocused] = useState(false);
   const router = useRouter();
 
-  const productNameSearch =
-    new URLSearchParams(window.location.search).get("productName") || "";
+  const [productNameSearch, setProductNameSearch] = useState("");
   const setSearchBarFocused = useGlobalUiStore(
     (state) => state.setSearchBarFocused,
   );
@@ -29,6 +28,14 @@ function SearchBar() {
       router.push(`/search?productName=${searchTerm}`);
     }
   }
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productName = urlParams.get("productName");
+    if (productName) {
+      setProductNameSearch(productName);
+    }
+  }, []);
 
   useEffect(() => {
     function handleFocusOut(event: KeyboardEvent) {
