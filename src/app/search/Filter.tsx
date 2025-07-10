@@ -1,9 +1,10 @@
 import FilterSelect from "./FilterSelect";
+import MinMaxPrice from "./MinMaxPrice";
 
 function Filter() {
   return (
     <div className="my-8 flex justify-between">
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-wrap items-center gap-6">
         <FilterSelect
           selectFor="category"
           label="نوع"
@@ -12,18 +13,8 @@ function Filter() {
             { value: "digital", label: "دیجیتال" },
           ]}
         />
-        <input
-          type="number"
-          name="minPrice"
-          placeholder="حداقل قیمت"
-          className="w-24 rounded-xl border-b border-gray-400 pr-2 text-xs outline-none"
-        />
-        <input
-          type="number"
-          name="maxPrice"
-          placeholder="حداکثر قیمت"
-          className="w-24 rounded-xl border-b border-gray-400 pr-2 text-xs outline-none"
-        />
+        <MinMaxPrice />
+
         <FilterSelect
           selectFor="size"
           label="سایز"

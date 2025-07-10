@@ -1,11 +1,18 @@
-function ProductHeading() {
+function ProductHeading({
+  productName,
+  shortDescription,
+}: {
+  productName: string;
+  shortDescription?: string;
+}) {
   return (
     <>
-      <h1 className="text-4xl font-semibold">نام محصول </h1>
+      <h1 className="w-[90%] text-4xl leading-normal font-semibold">
+        {productName}
+      </h1>
       <p className="text-sm text-gray-500">
-        این محصول با کیفیت بالا و طراحی مدرن ارائه شده است. مناسب برای استفاده
-        روزمره و دارای دوام عالی می‌باشد. با خرید این محصول، تجربه‌ای متفاوت و
-        رضایت‌بخش خواهید داشت.
+        {shortDescription ||
+          `${productName} یک محصول با کیفیت بالا است که برای استفاده   دارای دوام عالی می‌باشد. با خرید این محصول، تجربه‌ای متفاوت و رضایت‌بخش خواهید داشت.`}
       </p>
     </>
   );

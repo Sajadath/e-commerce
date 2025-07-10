@@ -5,17 +5,61 @@ import PriceBlock from "./_components/PriceBlock";
 import ProductDescription from "./_components/ProductDescription";
 import ProductHeading from "./_components/ProductHeading";
 
-function ProductDetail() {
+interface Product {
+  name: string;
+  description?: string;
+  shortDescription?: string;
+  convertedPriceData: {
+    discountedPrice?: number;
+    price: number;
+  };
+  productOptions?: ProductOptions;
+
+  stock: {
+    inStcok: boolean;
+    quantity: number;
+  };
+}
+
+export type ProductOptions = {
+  name: string;
+  choices: {
+    value: string;
+    description: string;
+    inStock: boolean;
+  }[];
+}[];
+
+function ProductDetail({ product }: { product: Product }) {
   return (
     <section className="flex w-full flex-col gap-6 px-3 pt-6 lg:w-1/2 lg:pt-18">
-      <ProductHeading />
+      <ProductHeading
+        productName={product.name}
+        shortDescription={product.shortDescription}
+      />
       <StyledLine />
-      <PriceBlock />
+      {product.stock.quantity > 0 ? (
+        <>
+          <PriceBlock
+            discountedPrice={product.convertedPriceData.discountedPrice}
+            price={product.convertedPriceData.price}
+          />
+          <StyledLine />
+          <CustomizeProduct productOptions={product.productOptions} />
+          <Add stock={product.stock.quantity} />
+        </>
+      ) : (
+        <div>
+          <p className="text-center text-lg font-medium text-gray-400">
+            در انبار موجود <span className="text-red-500">نیست</span>
+          </p>
+        </div>
+      )}
+
       <StyledLine />
-      <CustomizeProduct />
-      <Add />
-      <StyledLine />
-      <ProductDescription />
+      {product.description && (
+        <ProductDescription htmlString={product.description} />
+      )}
     </section>
   );
 }

@@ -3,51 +3,68 @@
 import { useState } from "react";
 import SelectColor from "./SelectColor";
 import SizeSelector from "./SizeSelector";
+import { ProductOptions } from "../ProductDetail";
 
-const colors = [
-  { name: "مشکی", value: "bg-black" },
-  { name: "آبی", value: "bg-sky-500" },
-  { name: "امرالد", value: " bg-emerald-500" },
-  { name: "سفید", value: "bg-white" },
-];
-const sizes = [
-  { name: "کوچک", value: "small", isAvailable: true },
-  { name: "متوسط", value: "medium", isAvailable: true },
-  { name: "بزرگ", value: "large", isAvailable: false },
-];
-
-function CustomizeProduct() {
+function CustomizeProduct({
+  productOptions,
+}: {
+  productOptions?: ProductOptions;
+}) {
   const [selectedColorIndex, setSelectedColorIndex] = useState<number>(1);
   const [selectedSizeIndex, setSelectedSizeIndex] = useState<number | null>(
     null,
   );
+
+  const colorOptionsChoices = productOptions?.find(
+    (option) => option.name === "Color",
+  )?.choices;
+  const sizeOptionsChoices = productOptions?.find(
+    (option) => option.name === "Size",
+  )?.choices;
+
   return (
     <div className="flex flex-col gap-6">
       <h4 className="font-medium">انتخاب رنگ</h4>
-      <ul className="flex items-center gap-3">
-        {colors.map((color, index) => (
-          <SelectColor
-            key={color.value}
-            color={color}
-            setSelectedColorIndex={setSelectedColorIndex}
-            index={index}
-            selectedColorIndex={selectedColorIndex}
-          />
-        ))}
-      </ul>
+      {colorOptionsChoices && colorOptionsChoices?.length > 0 ? (
+        <ul className="flex items-center gap-3">
+          {colorOptionsChoices.map((color, index) => (
+            <SelectColor
+              key={index}
+              color={{ name: color.description, value: color.value }}
+              setSelectedColorIndex={setSelectedColorIndex}
+              index={index}
+              selectedColorIndex={selectedColorIndex}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div>
+          <p className="text-xs text-slate-400">محصول تک رنگ است</p>
+        </div>
+      )}
 
       <h4 className="font-medium">انتخاب سایز</h4>
-      <ul className="flex items-center gap-5">
-        {sizes.map((size, index) => (
-          <SizeSelector
-            key={size.value}
-            size={size}
-            setSelectedSizeIndex={setSelectedSizeIndex}
-            selectedSizeIndex={selectedSizeIndex}
-            index={index}
-          />
-        ))}
-      </ul>
+      {sizeOptionsChoices && sizeOptionsChoices?.length > 0 ? (
+        <ul className="flex items-center gap-5">
+          {sizeOptionsChoices.map((size, index) => (
+            <SizeSelector
+              key={index}
+              size={{
+                name: size.description,
+                value: size.value,
+                isAvailable: size.inStock,
+              }}
+              setSelectedSizeIndex={setSelectedSizeIndex}
+              selectedSizeIndex={selectedSizeIndex}
+              index={index}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div>
+          <p className="text-xs text-slate-400">محصول تک سایز است</p>
+        </div>
+      )}
     </div>
   );
 }

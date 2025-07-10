@@ -40,9 +40,9 @@ async function NewestProducts({ limit }: { limit?: number }) {
             <ProductCard
               delay={index * 0.2}
               key={product.numericId}
-              slug={product?.slug}
-              productName={product?.name}
-              price={product?.priceData?.price}
+              slug={product?._id || "404"}
+              productName={product?.name || "محصول"}
+              price={product?.priceData?.price || 0}
               primaryImageUrl={product?.media?.mainMedia?.image?.url}
             />
           ))

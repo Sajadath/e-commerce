@@ -1,9 +1,8 @@
 "use client";
-import { convertToPersianNumber } from "@/helperFunctions/stringToPersianNumbers";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import ToomanIcon from "./ToomanIcon";
-import { motion } from "motion/react";
 
 const variants = {
   hidden: { x: 50, opacity: 0, scale: 1.2 },
@@ -16,11 +15,11 @@ const variants = {
 };
 
 type ProductCardProps = {
-  slug?: string;
-  productName?: string | null;
-  price?: number | null;
+  slug: string;
+  productName: string | null;
+  price: number | null;
   primaryImageUrl?: string;
-  delay?: number;
+  delay: number;
 };
 
 function ProductCard({
@@ -65,14 +64,19 @@ function ProductCard({
           </div>
         </Link>
         <div className="flex items-start justify-between gap-4 px-2 py-3">
-          <span className="flex items-center justify-center text-sm">
-            {productName || "محصول"}
-          </span>
+          <Link
+            href={`/products/${slug}`}
+            className="hover:text-lightred text-sm font-semibold text-gray-800"
+          >
+            <span className="flex items-center justify-center text-sm">
+              {productName || "محصول"}
+            </span>
+          </Link>
         </div>
       </div>
       <div className="flex justify-between justify-self-end py-2">
         <span className="flex h-fit items-center justify-center gap-1 py-2 text-sm font-semibold">
-          {(price && convertToPersianNumber(price)) || "-"} <ToomanIcon />
+          {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
         <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-2 py-0.5 text-xs hover:text-white">
           افزودن به سبد خرید

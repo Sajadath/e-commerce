@@ -3,9 +3,7 @@
 import { convertToPersianNumber } from "@/helperFunctions/stringToPersianNumbers";
 import { useState } from "react";
 
-const stock = 5;
-
-function Add() {
+function Add({ stock }: { stock: number }) {
   const [quantity, setQuantity] = useState(1);
   return (
     <div className="flex flex-col gap-4">
@@ -44,13 +42,15 @@ function Add() {
         </button>
       </div>
 
-      <div className="py-2 text-center text-xs">
-        فقط{" "}
-        <span className="px-1 text-orange-500">
-          {convertToPersianNumber("5")} عدد
-        </span>
-        در انبار موجود است
-      </div>
+      {stock < 6 && (
+        <div className="py-2 text-center text-xs">
+          فقط{" "}
+          <span className="px-1 text-orange-500">
+            {convertToPersianNumber("5")} عدد
+          </span>
+          در انبار موجود است
+        </div>
+      )}
     </div>
   );
 }

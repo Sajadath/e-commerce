@@ -6,6 +6,8 @@ import { wixClientServerVisitors } from "@/lib/wixClientServerVisitors";
 import { Suspense } from "react";
 import SearchInProductsSkeleton from "./SearchInProductsSkeleton";
 
+export const revalidate = 0;
+
 export default async function SearchPage({
   searchParams,
 }: {

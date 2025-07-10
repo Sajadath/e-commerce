@@ -1,37 +1,52 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-const images = [
-  { id: 1, url: "/watch.webp", alt: "product-name Image" },
-  { id: 2, url: "/watchImg2.webp", alt: "product-name Image" },
-  { id: 3, url: "/watchImg3.webp", alt: "product-name Image" },
-  { id: 4, url: "/watchImg3.webp", alt: "product-name Image" },
-];
 
-function ProductImages() {
+type ImagesArray = {
+  title: string;
+  image: {
+    url: string;
+  };
+}[];
+
+function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
   const [shownImageIndex, setShownImageIndex] = useState(0);
+  const [imageIsLoading, setImageIsLoading] = useState(true);
+
   return (
-    <section className="top-20 h-max w-full lg:sticky lg:w-1/2">
+    <section className="top-20 mt-2 h-max w-full lg:sticky lg:w-1/2">
       <div className="">
         <div className="relative h-[500px]">
+          <div
+            className={`${imageIsLoading ? "block" : "hidden"} relative h-full`}
+          >
+            <div className="loader absolute top-1/2 left-1/2 -translate-1/2"></div>
+          </div>
+
           <Image
-            src={images[shownImageIndex].url}
-            alt={images[shownImageIndex].alt}
+            src={imagesArray[shownImageIndex].image.url}
+            alt={imagesArray[shownImageIndex].title}
             fill
             sizes="50vw"
-            className="rounded-md object-contain"
+            className={`${imageIsLoading ? "invisible" : "block"} rounded-md object-contain`}
+            onLoad={() => setImageIsLoading(false)}
           />
         </div>
-        <div className="mt-8 flex items-center justify-between gap-6">
-          {images.map((img, index) => (
+
+        <div className="mt-8 flex items-center justify-end gap-6">
+          {imagesArray.map((img, index) => (
             <div
               key={index}
               className={`relative h-32 w-1/4 cursor-pointer`}
-              onClick={() => setShownImageIndex(index)}
+              onClick={() => {
+                if (shownImageIndex === index) return;
+                setImageIsLoading(true);
+                setShownImageIndex(index);
+              }}
             >
               <Image
-                src={img.url}
-                alt={img.alt}
+                src={img.image.url}
+                alt={img.title}
                 fill
                 sizes="30vw"
                 className="rounded-md object-cover"

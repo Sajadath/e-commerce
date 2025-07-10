@@ -13,6 +13,7 @@ interface SearchProductsListPropsWithProductName {
 type ProductDetail = {
   numericId: number;
   slug: string;
+  _id: string;
   name: string;
   priceData: {
     price: number;
@@ -94,7 +95,7 @@ async function SearchInProducts(
             <ProductCard
               delay={index * 0.1}
               key={product.numericId}
-              slug={product?.slug}
+              slug={product?._id}
               productName={product?.name}
               price={product?.priceData?.price}
               primaryImageUrl={product?.media?.mainMedia?.image?.url}
