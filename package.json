@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-lottie": "^1.2.10",
     "@wix/bookings": "^1.0.906",
     "@wix/sdk": "^1.15.23",
     "@wix/stores": "^1.0.468",
@@ -23,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-loading-skeleton": "^3.5.0",
+    "react-lottie": "^1.2.10",
     "react-toastify": "^11.0.5",
     "zustand": "^5.0.5"
   },

@@ -1,0 +1,48 @@
+"use client";
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+function FeatureBox({
+  feature,
+  i,
+}: {
+  feature: { title: string; desc: string; icon: string; grow?: boolean };
+  i: number;
+}) {
+  const [beingHovered, setBeingHovered] = useState(false);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, type: "spring", stiffness: 120 },
+    }),
+  };
+  return (
+    <motion.div
+      onMouseEnter={() => setBeingHovered(true)}
+      onMouseLeave={() => setBeingHovered(false)}
+      key={feature.title}
+      className={`relative flex flex-col items-center rounded-2xl bg-white p-6 text-center shadow-lg transition-transform hover:scale-105 ${beingHovered ? "z-10" : "z-0"} ${
+        feature.grow ? "grow" : ""
+      }`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      custom={i}
+      variants={cardVariants}
+    >
+      <span className="absolute top-0 left-0 mb-3 block -translate-x-1/2 -translate-y-1/2 -rotate-45 text-5xl">
+        {feature.icon}
+      </span>
+      <h3 className="text-lightred mb-2 text-lg font-bold text-nowrap">
+        {feature.title}
+      </h3>
+
+      <p className="text-base font-medium text-gray-700">{feature.desc}</p>
+    </motion.div>
+  );
+}
+
+export default FeatureBox;

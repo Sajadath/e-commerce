@@ -10,7 +10,7 @@ function NavbarLink({ children, href }: { children: ReactNode; href: string }) {
   return (
     <div className="relative flex h-full items-center justify-center">
       <Link
-        className={`${pathName === href ? "text-lightred" : "text-black"} transition-all duration-300`}
+        className={`${pathName === href ? "text-lightred" : "text-black"} text-sm transition-all duration-300`}
         href={href}
       >
         {children}
@@ -39,7 +39,7 @@ function NavbarLink({ children, href }: { children: ReactNode; href: string }) {
               originX: 0, // left origin
               originY: 1,
             }}
-            className={`bg-lightred absolute right-0 bottom-0 left-0 h-1 rounded-2xl transition-all duration-300`}
+            className={`bg-lightred absolute right-0 bottom-0 left-0 h-0.5 rounded-2xl transition-all duration-300`}
           />
         ) : null}
       </AnimatePresence>

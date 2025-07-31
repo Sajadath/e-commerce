@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import ToomanIcon from "./ToomanIcon";
+import AddToCartButton from "@/components/ui/AddToCartButton";
 
 const variants = {
   hidden: { x: 50, opacity: 0, scale: 1.2 },
@@ -78,9 +79,7 @@ function ProductCard({
         <span className="flex h-fit items-center justify-center gap-1 py-2 text-sm font-semibold">
           {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
-        <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-2 py-0.5 text-xs hover:text-white">
-          افزودن به سبد خرید
-        </button>
+        <AddToCartButton />
       </div>
     </motion.div>
   );

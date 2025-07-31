@@ -28,8 +28,6 @@ function Navbar() {
           </Link>
           <div className="hidden h-full gap-4 text-nowrap xl:flex">
             <NavbarLink href="/">خانه</NavbarLink>
-            <NavbarLink href="/shop">فروشگاه</NavbarLink>
-            <NavbarLink href="/deals">تخفیف‌ها</NavbarLink>
             <NavbarLink href="/about">درباره ما</NavbarLink>
             <NavbarLink href="/contact">تماس با ما</NavbarLink>
           </div>

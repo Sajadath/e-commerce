@@ -31,18 +31,12 @@ function NavIcons() {
         onClick={handleProfile}
       />
       {isProfileOpen && (
-        <div className="shadow-card absolute top-12 left-0 z-20 rounded-md p-4 text-sm">
+        <div className="shadow-card absolute top-12 left-0 z-20 flex flex-col items-start gap-2 rounded-md bg-white p-4 text-center text-sm text-nowrap backdrop-blur-sm">
           <Link href="/">حساب کاربری</Link>
-          <button className="mt-2 cursor-pointer">خروج</button>
+          <button className="mt-2 w-full cursor-pointer">خروج</button>
         </div>
       )}
-      <Image
-        src="/notification.png"
-        alt="notification Icon"
-        width={22}
-        height={22}
-        className="cursor-pointer"
-      />
+
       <div
         className="relative"
         onMouseEnter={() => setIsCartOpen(true)}
