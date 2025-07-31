@@ -1,18 +1,18 @@
-import { create } from "zustand";
+// import { create } from "zustand";
 
-type CartItem = {
-  title: string;
-  price: number;
-  quantity: number;
-};
+// type CartItem = {
+//   title: string;
+//   price: number;
+//   quantity: number;
+// };
 
-type cartStore = {
-  cartItems: CartItem[];
-  setSearchBarFocused: (focused: boolean) => void;
-};
+// type cartStore = {
+//   cartItems: CartItem[];
+//   setSearchBarFocused: (focused: boolean) => void;
+// };
 
-const useCartStore = create<cartStore>((set) => ({
-  cartItems: [],
-}));
+// const useCartStore = create<cartStore>((set) => ({
+//   cartItems: [],
+// }));
 
-export default useCartStore;
+// export default useCartStore;
