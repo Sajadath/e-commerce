@@ -1,11 +1,19 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { FaHome, FaInfo, FaPhone, FaShoppingCart } from "react-icons/fa";
+import MenuItems from "./MenuItems";
 
 function Menu() {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const menuItems = [
+    { href: "/", label: "خانه", Icon: FaHome },
+    { href: "/about", label: "درباره ما", Icon: FaInfo },
+    { href: "/contact", label: "تماس با ما", Icon: FaPhone },
+    { href: "/cart", label: "سبد خرید", Icon: FaShoppingCart },
+  ];
 
   return (
     <div>
@@ -19,20 +27,16 @@ function Menu() {
       />
       <AnimatePresence>
         {openMenu && (
-          <motion.div
+          <motion.ul
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
-            className="fixed top-20 right-0 left-0 z-100 flex h-[calc(100vh-5rem)] flex-col flex-wrap items-center justify-center gap-8 bg-black/95 font-semibold text-white backdrop-blur-lg"
+            className="fixed top-20 right-0 left-0 z-100 flex h-[calc(100vh-5rem)] flex-col flex-wrap items-center justify-center gap-8 bg-white/95 font-semibold text-black backdrop-blur-lg"
           >
-            <Link href="/">خانه</Link>
-            <Link href="/about">فروشگاه</Link>
-            <Link href="/contact">تخفیف‌ها</Link>
-            <Link href="/contact">درباره ما</Link>
-            <Link href="/contact">تماس با ما</Link>
-            <Link href="/contact">خروج</Link>
-            <Link href="/contact">سبد خرید(1)</Link>
-          </motion.div>
+            {menuItems.map(({ href, label, Icon }) => (
+              <MenuItems key={href} title={label} icon={<Icon />} url={href} />
+            ))}
+          </motion.ul>
         )}
       </AnimatePresence>
     </div>

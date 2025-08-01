@@ -126,11 +126,11 @@ const CustomCarousel: React.FC = () => {
                     {slide.title}
                   </h2>
                   <div className="mx-auto flex items-center gap-3">
-                    <div className="h-0.5 w-8 bg-gradient-to-r from-black via-black/30 to-transparent" />
+                    <div className="h-0.5 w-8 bg-gradient-to-l from-black via-black/30 to-transparent" />
                     <button className="z-20 flex w-fit cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 border-black bg-transparent px-6 py-1 text-center text-black transition duration-300 hover:bg-black hover:text-white">
                       <h2>خرید</h2>
                     </button>
-                    <div className="h-0.5 w-8 bg-gradient-to-r from-transparent via-black/30 to-black" />
+                    <div className="h-0.5 w-8 bg-gradient-to-l from-transparent via-black/30 to-black" />
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const CustomCarousel: React.FC = () => {
               clearAndSetInterval();
               setCurrentSlide(index);
             }}
-            className={`relative h-2 w-2 rounded-full ${
+            className={`relative h-2 w-2 cursor-pointer rounded-full ${
               currentSlide === index ? "bg-gray-600" : "bg-transparent"
             }`}
           >

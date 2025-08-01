@@ -1,8 +1,40 @@
-function AddToCartButton() {
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import useCartStore from "@/stores/cartStore";
+
+type AddToCartButtonProps = {
+  itemId: string;
+  title: string;
+  price: number;
+  imageUrl: string;
+};
+
+function AddToCartButton({
+  itemId,
+  title,
+  price,
+  imageUrl,
+}: AddToCartButtonProps) {
+  const [hovered, setHovered] = useState(false);
+  const addToCart = useCartStore((state) => state.addToCart);
+
   return (
-    <button className="border-lightred hover:bg-lightred text-lightred w-fit cursor-pointer rounded-full border-2 px-2 py-0.5 text-xs hover:text-white">
+    <motion.button
+      whileTap={{ y: 4 }}
+      className="border-lightred text-lightred relative block w-fit cursor-pointer overflow-hidden rounded-full border-2 px-2 py-0.5 text-xs transition-all duration-500 hover:text-white"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => {
+        addToCart({ itemId, title, price, quantity: 1, imageUrl });
+      }}
+    >
       افزودن به سبد خرید
-    </button>
+      <span
+        className={`bg-lightred absolute top-0 right-0 bottom-0 left-0 -z-1 transition-all duration-500 ${hovered ? "translate-y-[0%]" : "translate-y-[100%]"}`}
+      />
+    </motion.button>
   );
 }
 

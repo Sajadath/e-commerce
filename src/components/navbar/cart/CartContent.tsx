@@ -1,13 +1,24 @@
-import CartItems from "./CartItems";
+import { type CartItem as CartItemTypes } from "@/stores/cartStore";
+import CartItem from "./CartItem";
 
-function CartContent() {
+type CartContentProps = {
+  cartItems: CartItemTypes[];
+};
+
+function CartContent({ cartItems }: CartContentProps) {
   const price = 500;
   return (
-    <div className="flex-col gap-8">
+    <div className="w-[380px] flex-col gap-8">
       {/* items */}
-      <CartItems />
+
+      <div className="flex max-h-[300px] flex-col gap-3 overflow-y-auto">
+        {cartItems.map((item, index) => (
+          <CartItem key={index} {...item} />
+        ))}
+      </div>
       {/* infos */}
-      <div>
+      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      <div className="px-3">
         <div className="my-5 mb-3 flex items-center justify-between text-sm font-semibold">
           <span>قیمت کل</span>
           <div>
@@ -22,7 +33,7 @@ function CartContent() {
           <button className="cursor-pointer rounded-md px-4 py-3 ring-1 ring-gray-300">
             مشاهده سبد خرید
           </button>
-          <button className="cursor-pointer rounded-md bg-black px-4 py-3 text-white">
+          <button className="bg-lightred cursor-pointer rounded-md px-4 py-3 text-white">
             پرداخت
           </button>
         </div>

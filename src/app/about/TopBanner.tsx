@@ -1,6 +1,6 @@
 function TopBanner() {
   return (
-    <section className="from-lightred/30 to-lightred/70 relative h-30 w-[80%] overflow-hidden rounded-3xl bg-gradient-to-r sm:h-60">
+    <section className="from-lightred/30 to-lightred/70 relative h-30 w-[90%] overflow-hidden rounded-3xl bg-gradient-to-r sm:h-60 md:w-[80%]">
       <div className="bg-lightred absolute top-[50%] left-0 h-[50vw] w-[50vw] -translate-x-1/2 rounded-full" />
       <div className="bg-lightred absolute right-0 bottom-[50%] h-[50vw] w-[50vw] translate-x-1/2 rounded-full" />
       <div>

@@ -26,7 +26,7 @@ function Navbar() {
             <Image src="/logo.png" alt="Logo" width={24} height={24} />
             <div className="text-2xl tracking-wide">SHOPPER</div>
           </Link>
-          <div className="hidden h-full gap-4 text-nowrap xl:flex">
+          <div className="hidden h-full gap-4 text-nowrap lg:flex">
             <NavbarLink href="/">خانه</NavbarLink>
             <NavbarLink href="/about">درباره ما</NavbarLink>
             <NavbarLink href="/contact">تماس با ما</NavbarLink>
@@ -36,6 +36,9 @@ function Navbar() {
         <div className="flex w-2/3 items-center justify-between gap-8 xl:w-1/2">
           <SearchBar />
           <NavIcons />
+          <div className="block lg:hidden">
+            <Menu />
+          </div>
         </div>
       </div>
     </nav>

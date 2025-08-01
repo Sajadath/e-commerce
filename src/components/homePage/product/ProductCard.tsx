@@ -79,7 +79,12 @@ function ProductCard({
         <span className="flex h-fit items-center justify-center gap-1 py-2 text-sm font-semibold">
           {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
-        <AddToCartButton />
+        <AddToCartButton
+          itemId={slug}
+          title={productName || "محصول"}
+          price={price || 0}
+          imageUrl={primaryImageUrl || ""}
+        />
       </div>
     </motion.div>
   );
