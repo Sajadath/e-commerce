@@ -6,9 +6,10 @@ import { FaTrash } from "react-icons/fa";
 type QuantityProps = {
   currentQuantity: number;
   itemId: string;
+  maxQuantity: number;
 };
 
-function Quantity({ currentQuantity, itemId }: QuantityProps) {
+function Quantity({ currentQuantity, itemId, maxQuantity }: QuantityProps) {
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCartStore(
     (state) => state,
   );
@@ -33,8 +34,15 @@ function Quantity({ currentQuantity, itemId }: QuantityProps) {
         {currentQuantity.toLocaleString("fa-Ir")}
       </span>
       <button
-        onClick={() => increaseQuantity(itemId)}
-        className="text-lightred cursor-pointer text-lg font-bold"
+        onClick={() => {
+          if (maxQuantity && currentQuantity >= maxQuantity) return;
+          increaseQuantity(itemId);
+        }}
+        className={`text-lightred text-lg font-bold ${
+          maxQuantity && currentQuantity >= maxQuantity
+            ? "cursor-not-allowed opacity-50"
+            : "cursor-pointer"
+        }`}
       >
         +
       </button>

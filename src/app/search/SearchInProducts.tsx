@@ -11,6 +11,11 @@ interface SearchProductsListPropsWithProductName {
 }
 
 type ProductDetail = {
+  stock:
+    | {
+        quantity: number;
+      }
+    | undefined;
   numericId: number;
   slug: string;
   _id: string;
@@ -91,17 +96,22 @@ async function SearchInProducts(
     <>
       <div className="grid grid-cols-1 gap-x-8 gap-y-16 px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 2xl:grid-cols-4">
         {products?.length > 0 &&
-          products.map((product, index) => (
-            <ProductCard
-              itemId={product._id!}
-              delay={index * 0.1}
-              key={product.numericId}
-              slug={product?._id}
-              productName={product?.name}
-              price={product?.priceData?.price}
-              primaryImageUrl={product?.media?.mainMedia?.image?.url}
-            />
-          ))}
+          products.map((product, index) => {
+            const isAvailable = !!product?.stock?.quantity;
+            return (
+              <ProductCard
+                isAvailable={isAvailable}
+                maxQuantity={product.stock?.quantity || 10}
+                itemId={product._id!}
+                delay={index * 0.2}
+                key={product.numericId}
+                slug={product?._id || "404"}
+                productName={product?.name || "محصول"}
+                price={product?.priceData?.price || 0}
+                primaryImageUrl={product?.media?.mainMedia?.image?.url}
+              />
+            );
+          })}
       </div>
 
       {products?.length === 0 && (

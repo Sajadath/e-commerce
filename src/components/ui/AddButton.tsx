@@ -8,19 +8,28 @@ type AddButtonProps = {
   title: string;
   price: number;
   imageUrl: string;
+  maxQuantity: number;
+  fullButton?: boolean;
 };
 
-function AddButton({ itemId, title, price, imageUrl }: AddButtonProps) {
+function AddButton({
+  itemId,
+  title,
+  price,
+  imageUrl,
+  maxQuantity,
+  fullButton,
+}: AddButtonProps) {
   const [hovered, setHovered] = useState(false);
   const addToCart = useCartStore((state) => state.addToCart);
   return (
     <motion.button
       whileTap={{ y: 4 }}
-      className="border-lightred text-lightred relative block w-fit cursor-pointer overflow-hidden rounded-full border-2 px-2 py-0.5 text-xs transition-all duration-500 hover:text-white"
+      className={`${fullButton ? "w-full" : "w-fit"} border-lightred text-lightred relative cursor-pointer overflow-hidden rounded-full border-2 px-2 py-2 text-xs transition-all duration-500 hover:text-white`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => {
-        addToCart({ itemId, title, price, quantity: 1, imageUrl });
+        addToCart({ itemId, title, price, quantity: 1, imageUrl, maxQuantity });
       }}
     >
       افزودن به سبد خرید

@@ -1,8 +1,8 @@
-import { type CartItem as CartItemTypes } from "@/stores/cartStore";
+import { type CartItem as CartItemType } from "@/stores/cartStore";
 import CartItem from "./CartItem";
 
 type CartContentProps = {
-  cartItems: CartItemTypes[];
+  cartItems: CartItemType[];
 };
 
 function CartContent({ cartItems }: CartContentProps) {

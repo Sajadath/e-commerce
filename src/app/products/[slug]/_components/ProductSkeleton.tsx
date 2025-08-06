@@ -42,9 +42,6 @@ function ProductSkeleton() {
         </div>
         <div className="flex h-15 w-full items-center justify-between">
           <div className="h-full w-[20%]">
-            <Skeleton style={{ height: "100%" }} count={1} />
-          </div>
-          <div className="h-full w-[20%]">
             <button
               disabled
               className="border-lightred hover:bg-lightred text-lightred h-[70%] w-full animate-pulse cursor-pointer rounded-full border-2 px-3 py-1 text-sm opacity-35 hover:text-white"

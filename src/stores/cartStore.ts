@@ -6,6 +6,7 @@ export type CartItem = {
   price: number;
   quantity: number;
   imageUrl: string;
+  maxQuantity: number;
 };
 
 type cartStore = {

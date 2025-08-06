@@ -1,9 +1,9 @@
 import StyledLine from "@/components/ui/StyledLine";
+import Add from "./_components/Add";
 import CustomizeProduct from "./_components/CustomizeProduct";
 import PriceBlock from "./_components/PriceBlock";
 import ProductDescription from "./_components/ProductDescription";
 import ProductHeading from "./_components/ProductHeading";
-import AddToCartButton from "@/components/ui/AddToCartButton";
 // import Add from "./_components/Add";
 
 interface Product {
@@ -47,7 +47,15 @@ function ProductDetail({ product }: { product: Product }) {
           />
           <StyledLine />
           <CustomizeProduct productOptions={product.productOptions} />
-          <AddToCartButton />
+          <Add
+            // @ts-expect-error product will have these items
+            itemId={product._id}
+            title={product.name}
+            price={product.convertedPriceData.price}
+            // @ts-expect-error product will have these items
+            imageUrl={product.media?.mainMedia?.image?.url || "/product.png"}
+            stock={product.stock.quantity}
+          />
         </>
       ) : (
         <div>

@@ -16,21 +16,25 @@ const variants = {
 };
 
 type ProductCardProps = {
+  isAvailable: boolean;
   itemId: string;
   slug: string;
   productName: string | null;
   price: number | null;
   primaryImageUrl?: string;
   delay: number;
+  maxQuantity?: number;
 };
 
 function ProductCard({
+  isAvailable,
   slug,
   productName,
   price,
   primaryImageUrl,
   delay,
   itemId,
+  maxQuantity = 10,
 }: ProductCardProps) {
   return (
     <motion.div
@@ -82,6 +86,8 @@ function ProductCard({
           {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
         <AddToCartButton
+          isAvailable={isAvailable}
+          maxQuantity={maxQuantity}
           itemId={itemId}
           title={productName || "محصول"}
           price={price || 0}

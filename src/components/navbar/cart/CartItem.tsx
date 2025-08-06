@@ -2,7 +2,14 @@ import { type CartItem as CartItemProps } from "@/stores/cartStore";
 import Image from "next/image";
 import Quantity from "@/components/ui/Quantity";
 
-function CartItem({ itemId, title, price, quantity, imageUrl }: CartItemProps) {
+function CartItem({
+  itemId,
+  title,
+  price,
+  quantity,
+  imageUrl,
+  maxQuantity,
+}: CartItemProps) {
   return (
     <div className="mb-2 grid grid-cols-[1fr_2fr] gap-3 px-2">
       <div className="relative h-[130px] w-full">
@@ -21,7 +28,11 @@ function CartItem({ itemId, title, price, quantity, imageUrl }: CartItemProps) {
             <span className="mr-1">تومان</span>
           </div>
 
-          <Quantity itemId={itemId} currentQuantity={quantity} />
+          <Quantity
+            maxQuantity={maxQuantity}
+            itemId={itemId}
+            currentQuantity={quantity}
+          />
         </div>
       </div>
     </div>

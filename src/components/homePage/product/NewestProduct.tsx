@@ -37,17 +37,22 @@ async function NewestProducts({ limit }: { limit?: number }) {
       </h2>
       <div className="grid grid-cols-1 gap-x-8 gap-y-16 overflow-hidden px-4 sm:grid-cols-2 md:px-8 lg:grid-cols-3 lg:px-16 xl:px-32 2xl:grid-cols-4 2xl:px-64">
         {products?.length > 0 ? (
-          products.map((product, index) => (
-            <ProductCard
-              itemId={product._id!}
-              delay={index * 0.2}
-              key={product.numericId}
-              slug={product?._id || "404"}
-              productName={product?.name || "محصول"}
-              price={product?.priceData?.price || 0}
-              primaryImageUrl={product?.media?.mainMedia?.image?.url}
-            />
-          ))
+          products.map((product, index) => {
+            const isAvailable = !!product?.stock?.quantity;
+            return (
+              <ProductCard
+                isAvailable={isAvailable}
+                maxQuantity={product.stock?.quantity || 10}
+                itemId={product._id!}
+                delay={index * 0.2}
+                key={product.numericId}
+                slug={product?._id || "404"}
+                productName={product?.name || "محصول"}
+                price={product?.priceData?.price || 0}
+                primaryImageUrl={product?.media?.mainMedia?.image?.url}
+              />
+            );
+          })
         ) : (
           <p className="w-full p-8 text-center text-2xl font-semibold">
             محصولی یافت نشد
