@@ -6,7 +6,10 @@ type CartContentProps = {
 };
 
 function CartContent({ cartItems }: CartContentProps) {
-  const price = 500;
+  const TotalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0,
+  );
   return (
     <div className="w-[380px] flex-col gap-8">
       {/* items */}
@@ -17,12 +20,12 @@ function CartContent({ cartItems }: CartContentProps) {
         ))}
       </div>
       {/* infos */}
-      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      <div className="my-2 h-[2px] w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
       <div className="px-3">
         <div className="my-5 mb-3 flex items-center justify-between text-sm font-semibold">
           <span>قیمت کل</span>
           <div>
-            <span>{price.toLocaleString("fa-IR")} </span>
+            <span>{TotalPrice.toLocaleString("fa-IR")} </span>
             <span>هزار تومان</span>
           </div>
         </div>

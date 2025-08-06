@@ -16,6 +16,7 @@ const variants = {
 };
 
 type ProductCardProps = {
+  itemId: string;
   slug: string;
   productName: string | null;
   price: number | null;
@@ -29,6 +30,7 @@ function ProductCard({
   price,
   primaryImageUrl,
   delay,
+  itemId,
 }: ProductCardProps) {
   return (
     <motion.div
@@ -80,7 +82,7 @@ function ProductCard({
           {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
         <AddToCartButton
-          itemId={slug}
+          itemId={itemId}
           title={productName || "محصول"}
           price={price || 0}
           imageUrl={primaryImageUrl || ""}

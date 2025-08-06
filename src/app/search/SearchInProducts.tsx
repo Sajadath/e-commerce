@@ -93,6 +93,7 @@ async function SearchInProducts(
         {products?.length > 0 &&
           products.map((product, index) => (
             <ProductCard
+              itemId={product._id!}
               delay={index * 0.1}
               key={product.numericId}
               slug={product?._id}

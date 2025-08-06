@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import useCartStore from "@/stores/cartStore";
+
+import AddButton from "./AddButton";
+import Quantity from "./Quantity";
 
 type AddToCartButtonProps = {
   itemId: string;
@@ -17,24 +18,21 @@ function AddToCartButton({
   price,
   imageUrl,
 }: AddToCartButtonProps) {
-  const [hovered, setHovered] = useState(false);
-  const addToCart = useCartStore((state) => state.addToCart);
+  const cartItems = useCartStore((state) => state.cartItems);
+  const isItemInCart = cartItems.some((item) => item.itemId === itemId);
+  const currentQuantity =
+    cartItems.find((item) => item.itemId === itemId)?.quantity || 0;
+
+  if (isItemInCart)
+    return <Quantity currentQuantity={currentQuantity} itemId={itemId} />;
 
   return (
-    <motion.button
-      whileTap={{ y: 4 }}
-      className="border-lightred text-lightred relative block w-fit cursor-pointer overflow-hidden rounded-full border-2 px-2 py-0.5 text-xs transition-all duration-500 hover:text-white"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => {
-        addToCart({ itemId, title, price, quantity: 1, imageUrl });
-      }}
-    >
-      افزودن به سبد خرید
-      <span
-        className={`bg-lightred absolute top-0 right-0 bottom-0 left-0 -z-1 transition-all duration-500 ${hovered ? "translate-y-[0%]" : "translate-y-[100%]"}`}
-      />
-    </motion.button>
+    <AddButton
+      itemId={itemId}
+      title={title}
+      price={price}
+      imageUrl={imageUrl}
+    />
   );
 }
 

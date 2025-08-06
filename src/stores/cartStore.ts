@@ -10,6 +10,7 @@ export type CartItem = {
 
 type cartStore = {
   cartItems: CartItem[];
+
   addToCart: (item: CartItem) => void;
   increaseQuantity: (itemId: string) => void;
   decreaseQuantity: (itemId: string) => void;
@@ -22,7 +23,7 @@ const useCartStore = create<cartStore>((set) => ({
   addToCart: (item: CartItem) =>
     set((state) => {
       const existingItemIndex = state.cartItems.findIndex(
-        (cartItem) => cartItem.title === item.title,
+        (cartItem) => cartItem.itemId === item.itemId,
       );
 
       if (existingItemIndex !== -1) {

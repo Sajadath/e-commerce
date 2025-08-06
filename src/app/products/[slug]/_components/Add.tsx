@@ -7,7 +7,7 @@ function Add({ stock }: { stock: number }) {
   const [quantity, setQuantity] = useState(1);
   return (
     <div className="flex flex-col gap-4">
-      <h4>تعداد </h4>
+      <h4>خرید این محصول </h4>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex w-32 items-center justify-between rounded-3xl bg-gray-100">

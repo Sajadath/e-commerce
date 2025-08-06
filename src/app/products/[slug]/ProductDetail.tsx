@@ -1,9 +1,10 @@
 import StyledLine from "@/components/ui/StyledLine";
-import Add from "./_components/Add";
 import CustomizeProduct from "./_components/CustomizeProduct";
 import PriceBlock from "./_components/PriceBlock";
 import ProductDescription from "./_components/ProductDescription";
 import ProductHeading from "./_components/ProductHeading";
+import AddToCartButton from "@/components/ui/AddToCartButton";
+// import Add from "./_components/Add";
 
 interface Product {
   name: string;
@@ -46,7 +47,7 @@ function ProductDetail({ product }: { product: Product }) {
           />
           <StyledLine />
           <CustomizeProduct productOptions={product.productOptions} />
-          <Add stock={product.stock.quantity} />
+          <AddToCartButton />
         </>
       ) : (
         <div>

@@ -1,6 +1,6 @@
 import { type CartItem as CartItemProps } from "@/stores/cartStore";
 import Image from "next/image";
-import Quantity from "./Quantity";
+import Quantity from "@/components/ui/Quantity";
 
 function CartItem({ itemId, title, price, quantity, imageUrl }: CartItemProps) {
   return (

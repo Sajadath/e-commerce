@@ -29,6 +29,7 @@ async function NewestProducts({ limit }: { limit?: number }) {
   }
 
   const products = res?.items;
+
   return (
     <>
       <h2 className="mt-10 px-4 py-14 text-2xl font-semibold md:px-8 lg:px-16 xl:px-32 2xl:px-64">
@@ -38,6 +39,7 @@ async function NewestProducts({ limit }: { limit?: number }) {
         {products?.length > 0 ? (
           products.map((product, index) => (
             <ProductCard
+              itemId={product._id!}
               delay={index * 0.2}
               key={product.numericId}
               slug={product?._id || "404"}

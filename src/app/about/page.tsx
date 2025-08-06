@@ -5,7 +5,7 @@ import Features from "./Features";
 
 function AboutPage() {
   return (
-    <main className="flex flex-col items-center justify-center px-4 py-12">
+    <main className="flex flex-col items-center justify-center px-4 py-6">
       <TopBanner />
       <Advice />
       <GetToKnow />

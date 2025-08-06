@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import CartContent from "./CartContent";
 import useCartStore from "@/stores/cartStore";
-import { FaShoppingCart } from "react-icons/fa";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 function CartCard() {
   const cartItems = useCartStore((state) => state.cartItems);
@@ -32,10 +32,7 @@ function CartCard() {
         <div className="flex items-center justify-center gap-3 px-3 text-center text-gray-500">
           <span>هیچ کالایی در سبد خرید شما وجود ندارد</span>
           <div className="relative">
-            <FaShoppingCart className="fill-lightred size-7" />
-            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg text-white">
-              X
-            </span>
+            <MdOutlineRemoveShoppingCart className="fill-lightred size-7" />
           </div>
         </div>
       )}

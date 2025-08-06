@@ -31,7 +31,7 @@ const features = [
 
 function Features() {
   return (
-    <section className="my-15 max-w-5xl">
+    <section className="mt-15 w-full">
       <motion.div
         initial={{ opacity: 0, x: -25 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -44,11 +44,13 @@ function Features() {
           وَست شاپر
         </span>
       </motion.div>
-      <div className="bg-lightred/50 mx-2 rounded-lg px-4 py-5 md:mx-8 md:px-5">
-        <div className="flex flex-wrap items-center justify-center gap-6 py-3">
-          {features.map((feature, i) => (
-            <FeatureBox key={feature.title} feature={feature} i={i} />
-          ))}
+      <div className="via-lightred w-full bg-gradient-to-r from-transparent to-transparent">
+        <div className="mx-auto max-w-5xl rounded-lg px-4 py-5 md:px-5">
+          <div className="flex flex-wrap items-center justify-center gap-6 py-3">
+            {features.map((feature, i) => (
+              <FeatureBox key={feature.title} feature={feature} i={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
