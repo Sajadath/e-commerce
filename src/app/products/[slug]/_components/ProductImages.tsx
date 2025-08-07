@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import ImageScroller from "./ImageScroller";
 
 type ImagesArray = {
   title: string;
@@ -14,7 +15,7 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
   const [imageIsLoading, setImageIsLoading] = useState(true);
 
   return (
-    <section className="top-20 mt-2 h-max w-full max-w-screen lg:sticky lg:w-1/2">
+    <section className="top-0 mt-2 h-max w-full max-w-screen lg:sticky lg:w-1/2">
       <div className="w-full">
         <div className="relative h-[500px]">
           <div
@@ -33,25 +34,13 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
           />
         </div>
 
-        <div className="max mx-4 mt-8 flex max-w-full flex-row items-center gap-6 overflow-x-auto">
-          {imagesArray.map((img, index) => (
-            <div
-              key={index}
-              className={`relative h-32 w-32 shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-200`}
-              onClick={() => {
-                if (shownImageIndex === index) return;
-                setImageIsLoading(true);
-                setShownImageIndex(index);
-              }}
-            >
-              <Image
-                src={img.image.url}
-                alt={img.title}
-                fill
-                className="object-fit rounded-md"
-              />
-            </div>
-          ))}
+        <div className="relative h-50 w-full">
+          <ImageScroller
+            imagesArray={imagesArray}
+            shownImageIndex={shownImageIndex}
+            setShownImageIndex={setShownImageIndex}
+            setImageIsLoading={setImageIsLoading}
+          />
         </div>
       </div>
     </section>

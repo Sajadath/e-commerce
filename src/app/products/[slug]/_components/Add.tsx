@@ -15,7 +15,7 @@ function Add({ itemId, title, price, imageUrl, stock }: AddProps) {
   return (
     <div className="flex flex-col gap-4">
       <h4>خرید این محصول </h4>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-end">
         <AddToCartButton
           isAvailable={true}
           itemId={itemId}
@@ -30,7 +30,7 @@ function Add({ itemId, title, price, imageUrl, stock }: AddProps) {
         <div className="py-2 text-center text-xs">
           فقط{" "}
           <span className="px-1 text-orange-500">
-            {convertToPersianNumber("5")} عدد
+            {convertToPersianNumber(`${stock}`)} عدد
           </span>
           در انبار موجود است
         </div>

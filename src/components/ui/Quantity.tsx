@@ -14,18 +14,18 @@ function Quantity({ currentQuantity, itemId, maxQuantity }: QuantityProps) {
     (state) => state,
   );
   return (
-    <div className="flex items-center justify-center gap-3 rounded-lg border border-gray-200 bg-white px-3 py-1 shadow-lg">
+    <div className="flex items-center justify-center gap-3 rounded-lg border border-gray-200 bg-white shadow-lg">
       {currentQuantity >= 2 ? (
         <button
           onClick={() => decreaseQuantity(itemId)}
-          className="text-lightred cursor-pointer text-lg font-bold"
+          className="text-lightred cursor-pointer px-3 py-2 text-lg font-bold"
         >
           -
         </button>
       ) : (
         <button
           onClick={() => removeFromCart(itemId)}
-          className="text-lightred cursor-pointer text-lg font-bold"
+          className="text-lightred cursor-pointer px-3 py-2 text-lg font-bold"
         >
           <FaTrash className="text-lightred size-4" />
         </button>
@@ -38,7 +38,7 @@ function Quantity({ currentQuantity, itemId, maxQuantity }: QuantityProps) {
           if (maxQuantity && currentQuantity >= maxQuantity) return;
           increaseQuantity(itemId);
         }}
-        className={`text-lightred text-lg font-bold ${
+        className={`text-lightred px-3 py-2 text-lg font-bold ${
           maxQuantity && currentQuantity >= maxQuantity
             ? "cursor-not-allowed opacity-50"
             : "cursor-pointer"

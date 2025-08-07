@@ -8,6 +8,10 @@ import MenuItems from "./MenuItems";
 function Menu() {
   const [openMenu, setOpenMenu] = useState(false);
 
+  const closeMenu = () => {
+    setOpenMenu(false);
+  };
+
   const menuItems = [
     { href: "/", label: "خانه", Icon: FaHome },
     { href: "/about", label: "درباره ما", Icon: FaInfo },
@@ -34,7 +38,13 @@ function Menu() {
             className="fixed top-20 right-0 left-0 z-100 flex h-[calc(100vh-5rem)] flex-col flex-wrap items-center justify-center gap-8 bg-white/95 font-semibold text-black backdrop-blur-lg"
           >
             {menuItems.map(({ href, label, Icon }) => (
-              <MenuItems key={href} title={label} icon={<Icon />} url={href} />
+              <MenuItems
+                key={href}
+                title={label}
+                closeMenu={closeMenu}
+                icon={<Icon />}
+                url={href}
+              />
             ))}
           </motion.ul>
         )}
