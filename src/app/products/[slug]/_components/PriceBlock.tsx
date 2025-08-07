@@ -9,14 +9,14 @@ function PriceBlock({
 }) {
   return (
     <div className="flex items-center gap-4">
-      {discountedPrice && (
+      {discountedPrice && price - discountedPrice > 0 && (
         <h3 className="text-xl text-gray-500 line-through">
-          {Number(discountedPrice).toLocaleString("fa-IR")}
+          {Number(price).toLocaleString("fa-IR")}
         </h3>
       )}
 
       <h2 className="text-2xl font-medium">
-        {Number(price).toLocaleString("fa-IR")}
+        {Number(discountedPrice).toLocaleString("fa-IR")}
       </h2>
       <ToomanIcon />
     </div>

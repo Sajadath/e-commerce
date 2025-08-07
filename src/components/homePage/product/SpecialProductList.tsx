@@ -48,7 +48,11 @@ async function SpecialProductList({ limit }: { limit?: number }) {
                 key={product.numericId}
                 slug={product?._id || "404"}
                 productName={product?.name || "محصول"}
-                price={product?.priceData?.price || 0}
+                price={
+                  product.price?.discountedPrice ||
+                  product?.priceData?.price ||
+                  0
+                }
                 primaryImageUrl={product?.media?.mainMedia?.image?.url}
               />
             );

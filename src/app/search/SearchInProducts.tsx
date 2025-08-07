@@ -20,6 +20,9 @@ type ProductDetail = {
   slug: string;
   _id: string;
   name: string;
+  price: {
+    discountedPrice: number | null;
+  } | null;
   priceData: {
     price: number;
   };
@@ -107,7 +110,11 @@ async function SearchInProducts(
                 key={product.numericId}
                 slug={product?._id || "404"}
                 productName={product?.name || "محصول"}
-                price={product?.priceData?.price || 0}
+                price={
+                  product.price?.discountedPrice ||
+                  product?.priceData?.price ||
+                  0
+                }
                 primaryImageUrl={product?.media?.mainMedia?.image?.url}
               />
             );
