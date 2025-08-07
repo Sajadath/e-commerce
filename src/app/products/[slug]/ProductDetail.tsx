@@ -51,7 +51,10 @@ function ProductDetail({ product }: { product: Product }) {
             // @ts-expect-error product will have these items
             itemId={product._id}
             title={product.name}
-            price={product.convertedPriceData.discountedPrice}
+            price={
+              product.convertedPriceData.discountedPrice ||
+              product.convertedPriceData.price
+            }
             // @ts-expect-error product will have these items
             imageUrl={product.media?.mainMedia?.image?.url || "/product.png"}
             stock={product.stock.quantity}
