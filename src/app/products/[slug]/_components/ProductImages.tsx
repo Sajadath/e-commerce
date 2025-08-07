@@ -14,8 +14,8 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
   const [imageIsLoading, setImageIsLoading] = useState(true);
 
   return (
-    <section className="top-20 mt-2 h-max w-full lg:sticky lg:w-1/2">
-      <div className="">
+    <section className="top-20 mt-2 h-max w-full max-w-screen lg:sticky lg:w-1/2">
+      <div className="w-full">
         <div className="relative h-[500px]">
           <div
             className={`${imageIsLoading ? "block" : "hidden"} relative h-full`}
@@ -33,11 +33,11 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
           />
         </div>
 
-        <div className="mt-8 flex items-center justify-end gap-6 overflow-x-auto">
+        <div className="max mx-4 mt-8 flex max-w-full flex-row items-center gap-6 overflow-x-auto">
           {imagesArray.map((img, index) => (
             <div
               key={index}
-              className={`relative h-32 w-32 cursor-pointer overflow-hidden rounded-2xl border border-gray-200`}
+              className={`relative h-32 w-32 shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-gray-200`}
               onClick={() => {
                 if (shownImageIndex === index) return;
                 setImageIsLoading(true);

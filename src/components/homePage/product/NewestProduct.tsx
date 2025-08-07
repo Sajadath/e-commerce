@@ -29,7 +29,6 @@ async function NewestProducts({ limit }: { limit?: number }) {
   }
 
   const products = res?.items;
-  console.log(products);
 
   return (
     <>
