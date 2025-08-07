@@ -33,11 +33,11 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
           />
         </div>
 
-        <div className="mt-8 flex items-center justify-end gap-6">
+        <div className="mt-8 flex items-center justify-end gap-6 overflow-x-auto">
           {imagesArray.map((img, index) => (
             <div
               key={index}
-              className={`relative h-32 w-1/4 cursor-pointer`}
+              className={`relative h-32 w-32 cursor-pointer overflow-hidden rounded-2xl border border-gray-200`}
               onClick={() => {
                 if (shownImageIndex === index) return;
                 setImageIsLoading(true);
@@ -48,8 +48,7 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
                 src={img.image.url}
                 alt={img.title}
                 fill
-                sizes="30vw"
-                className="rounded-md object-cover"
+                className="object-fit rounded-md"
               />
             </div>
           ))}
