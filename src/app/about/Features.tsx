@@ -30,8 +30,6 @@ const features = [
 ];
 
 function Features() {
-  console.log(localStorage.getItem("abc"));
-
   return (
     <section className="mt-15 w-full">
       <motion.div
