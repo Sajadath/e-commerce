@@ -1,6 +1,8 @@
+"use client";
 import { create } from "zustand";
 
 export type CartItem = {
+  url: string;
   itemId: string;
   title: string;
   price: number;
@@ -11,7 +13,6 @@ export type CartItem = {
 
 type cartStore = {
   cartItems: CartItem[];
-
   addToCart: (item: CartItem) => void;
   increaseQuantity: (itemId: string) => void;
   decreaseQuantity: (itemId: string) => void;
@@ -19,7 +20,10 @@ type cartStore = {
 };
 
 const useCartStore = create<cartStore>((set) => ({
-  cartItems: [],
+  cartItems:
+    typeof window !== "undefined" && localStorage.getItem("cartItems") !== null
+      ? JSON.parse(localStorage.getItem("cartItems")!)
+      : [],
 
   addToCart: (item: CartItem) =>
     set((state) => {
@@ -30,8 +34,18 @@ const useCartStore = create<cartStore>((set) => ({
       if (existingItemIndex !== -1) {
         const updatedCartItems = [...state.cartItems];
         updatedCartItems[existingItemIndex].quantity += item.quantity;
+
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+        }
         return { cartItems: updatedCartItems };
       } else {
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            "cartItems",
+            JSON.stringify([...state.cartItems, item]),
+          );
+        }
         return { cartItems: [...state.cartItems, item] };
       }
     }),
@@ -43,6 +57,9 @@ const useCartStore = create<cartStore>((set) => ({
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem,
       );
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      }
       return { cartItems: updatedCartItems };
     }),
 
@@ -57,11 +74,23 @@ const useCartStore = create<cartStore>((set) => ({
             : cartItem,
         )
         .filter((cartItem): cartItem is CartItem => cartItem !== null);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      }
       return { cartItems: updatedCartItems };
     }),
 
   removeFromCart: (itemId) =>
     set((state) => {
+      if (typeof window !== "undefined") {
+        localStorage.setItem(
+          "cartItems",
+          JSON.stringify(
+            state.cartItems.filter((cartItem) => cartItem.itemId !== itemId),
+          ),
+        );
+      }
+
       return {
         cartItems: state.cartItems.filter(
           (cartItem) => cartItem.itemId !== itemId,

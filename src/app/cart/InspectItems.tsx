@@ -12,7 +12,7 @@ function InspectItems({ cartItems }: { cartItems: CartItem[] }) {
           {cartItems.map((item, index) => (
             <div
               key={index}
-              className="flex w-[300px] flex-col rounded-lg border border-gray-200 bg-white shadow-lg"
+              className="mx-auto flex w-[300px] flex-col rounded-lg border border-gray-200 bg-white shadow-lg"
             >
               <Image
                 width={300}

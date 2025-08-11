@@ -36,7 +36,7 @@ const CategoryItem = ({
       custom={delay}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.5 }}
       whileHover={{
         scale: 1.1,
         transition: { duration: 0.2 }, // no delay

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 type AddButtonProps = {
+  url: string;
   itemId: string;
   title: string;
   price: number;
@@ -13,6 +14,7 @@ type AddButtonProps = {
 };
 
 function AddButton({
+  url,
   itemId,
   title,
   price,
@@ -29,7 +31,15 @@ function AddButton({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => {
-        addToCart({ itemId, title, price, quantity: 1, imageUrl, maxQuantity });
+        addToCart({
+          url,
+          itemId,
+          title,
+          price,
+          quantity: 1,
+          imageUrl,
+          maxQuantity,
+        });
       }}
     >
       افزودن به سبد خرید

@@ -86,6 +86,7 @@ function ProductCard({
           {(price && price.toLocaleString("fa-IR")) || "-"} <ToomanIcon />
         </span>
         <AddToCartButton
+          url={`/products/${slug}`}
           isAvailable={isAvailable}
           maxQuantity={maxQuantity}
           itemId={itemId}

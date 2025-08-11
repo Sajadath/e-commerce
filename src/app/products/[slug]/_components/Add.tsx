@@ -17,6 +17,7 @@ function Add({ itemId, title, price, imageUrl, stock }: AddProps) {
       <h4>خرید این محصول </h4>
       <div className="flex items-center justify-end">
         <AddToCartButton
+          url={`/products/${itemId}`}
           isAvailable={true}
           itemId={itemId}
           title={title}

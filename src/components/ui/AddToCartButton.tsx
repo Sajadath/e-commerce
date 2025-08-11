@@ -6,6 +6,7 @@ import AddButton from "./AddButton";
 import Quantity from "./Quantity";
 
 type AddToCartButtonProps = {
+  url: string;
   isAvailable: boolean;
   itemId: string;
   title: string;
@@ -16,6 +17,7 @@ type AddToCartButtonProps = {
 };
 
 function AddToCartButton({
+  url,
   isAvailable,
   itemId,
   title,
@@ -49,6 +51,7 @@ function AddToCartButton({
 
   return (
     <AddButton
+      url={url}
       maxQuantity={maxQuantity}
       fullButton={fullButton}
       itemId={itemId}
