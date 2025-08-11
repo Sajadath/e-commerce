@@ -1,5 +1,6 @@
 "use client";
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export type CartItem = {
   url: string;
@@ -19,81 +20,67 @@ type cartStore = {
   removeFromCart: (itemId: string) => void;
 };
 
-const useCartStore = create<cartStore>((set) => ({
-  cartItems: [],
+const useCartStore = create<cartStore>()(
+  persist(
+    (set) => ({
+      cartItems: [],
 
-  addToCart: (item: CartItem) =>
-    set((state) => {
-      const existingItemIndex = state.cartItems.findIndex(
-        (cartItem) => cartItem.itemId === item.itemId,
-      );
-
-      if (existingItemIndex !== -1) {
-        const updatedCartItems = [...state.cartItems];
-        updatedCartItems[existingItemIndex].quantity += item.quantity;
-
-        if (typeof window !== "undefined") {
-          localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-        }
-        return { cartItems: updatedCartItems };
-      } else {
-        if (typeof window !== "undefined") {
-          localStorage.setItem(
-            "cartItems",
-            JSON.stringify([...state.cartItems, item]),
+      addToCart: (item: CartItem) =>
+        set((state) => {
+          const existingItemIndex = state.cartItems.findIndex(
+            (cartItem) => cartItem.itemId === item.itemId,
           );
-        }
-        return { cartItems: [...state.cartItems, item] };
-      }
-    }),
 
-  increaseQuantity: (itemId: string) =>
-    set((state) => {
-      const updatedCartItems = state.cartItems.map((cartItem) =>
-        cartItem.itemId === itemId
-          ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : cartItem,
-      );
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-      }
-      return { cartItems: updatedCartItems };
-    }),
+          if (existingItemIndex !== -1) {
+            const updatedCartItems = [...state.cartItems];
+            updatedCartItems[existingItemIndex].quantity += item.quantity;
 
-  decreaseQuantity: (itemId: string) =>
-    set((state) => {
-      const updatedCartItems = state.cartItems
-        .map((cartItem) =>
-          cartItem.itemId === itemId
-            ? cartItem.quantity === 1
-              ? null
-              : { ...cartItem, quantity: cartItem.quantity - 1 }
-            : cartItem,
-        )
-        .filter((cartItem): cartItem is CartItem => cartItem !== null);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-      }
-      return { cartItems: updatedCartItems };
-    }),
+            return { cartItems: updatedCartItems };
+          } else {
+            return { cartItems: [...state.cartItems, item] };
+          }
+        }),
 
-  removeFromCart: (itemId) =>
-    set((state) => {
-      if (typeof window !== "undefined") {
-        localStorage.setItem(
-          "cartItems",
-          JSON.stringify(
-            state.cartItems.filter((cartItem) => cartItem.itemId !== itemId),
-          ),
-        );
-      }
+      increaseQuantity: (itemId: string) =>
+        set((state) => {
+          const updatedCartItems = state.cartItems.map((cartItem) =>
+            cartItem.itemId === itemId
+              ? { ...cartItem, quantity: cartItem.quantity + 1 }
+              : cartItem,
+          );
 
-      return {
-        cartItems: state.cartItems.filter(
-          (cartItem) => cartItem.itemId !== itemId,
-        ),
-      };
+          return { cartItems: updatedCartItems };
+        }),
+
+      decreaseQuantity: (itemId: string) =>
+        set((state) => {
+          const updatedCartItems = state.cartItems
+            .map((cartItem) =>
+              cartItem.itemId === itemId
+                ? cartItem.quantity === 1
+                  ? null
+                  : { ...cartItem, quantity: cartItem.quantity - 1 }
+                : cartItem,
+            )
+            .filter((cartItem): cartItem is CartItem => cartItem !== null);
+
+          return { cartItems: updatedCartItems };
+        }),
+
+      removeFromCart: (itemId) =>
+        set((state) => {
+          return {
+            cartItems: state.cartItems.filter(
+              (cartItem) => cartItem.itemId !== itemId,
+            ),
+          };
+        }),
     }),
-}));
+    {
+      name: "cartStorage",
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
+);
 
 export default useCartStore;
