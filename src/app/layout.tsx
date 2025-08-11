@@ -4,7 +4,6 @@ import ToastProvider from "@/components/ui/ToastProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import LocalCart from "@/components/ui/LocalCart";
 
 const bYekan = localFont({ src: "./Iranyekan.ttf" });
 
@@ -30,7 +29,6 @@ export default function RootLayout({
         <Navbar />
         <ToastProvider>{children}</ToastProvider>
         <Footer />
-        <LocalCart />
       </body>
     </html>
   );

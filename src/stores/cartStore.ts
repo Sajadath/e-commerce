@@ -1,6 +1,6 @@
 "use client";
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 export type CartItem = {
   url: string;
@@ -78,7 +78,6 @@ const useCartStore = create<cartStore>()(
     }),
     {
       name: "cartStorage",
-      storage: createJSONStorage(() => localStorage),
     },
   ),
 );
