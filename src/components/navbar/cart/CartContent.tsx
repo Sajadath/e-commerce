@@ -1,5 +1,6 @@
 import { type CartItem as CartItemType } from "@/stores/cartStore";
 import CartItem from "./CartItem";
+import Link from "next/link";
 
 type CartContentProps = {
   cartItems: CartItemType[];
@@ -32,13 +33,12 @@ function CartContent({ cartItems }: CartContentProps) {
         <p className="mt-2 mb-4 text-xs text-gray-500">
           هزینه ارسال و مالیات در هنگام پرداخت محاسبه می‌شود
         </p>
-        <div className="flex justify-between text-sm">
-          <button className="cursor-pointer rounded-md px-4 py-3 ring-1 ring-gray-300">
-            مشاهده سبد خرید
-          </button>
-          <button className="bg-lightred cursor-pointer rounded-md px-4 py-3 text-white">
-            پرداخت
-          </button>
+        <div className="flex justify-end text-sm">
+          <Link href="/cart">
+            <button className="bg-lightred cursor-pointer rounded-md px-4 py-3 text-white">
+              پرداخت
+            </button>
+          </Link>
         </div>
       </div>
     </div>
