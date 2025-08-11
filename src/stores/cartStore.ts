@@ -20,10 +20,7 @@ type cartStore = {
 };
 
 const useCartStore = create<cartStore>((set) => ({
-  cartItems:
-    typeof window !== "undefined" && localStorage.getItem("cartItems") !== null
-      ? JSON.parse(localStorage.getItem("cartItems")!)
-      : [],
+  cartItems: [],
 
   addToCart: (item: CartItem) =>
     set((state) => {
