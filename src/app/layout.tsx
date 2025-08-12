@@ -1,5 +1,5 @@
 import Footer from "@/components/footer/Footer";
-import Navbar from "@/components/navbar/Navbar";
+import NavbarProvider from "@/components/navbar/NavbarProvider";
 import ToastProvider from "@/components/ui/ToastProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -24,9 +24,9 @@ export default function RootLayout({
     <html lang="fa">
       <body
         dir="rtl"
-        className={`${bYekan.className} grid min-h-dvh grid-rows-[auto_1fr_auto]`}
+        className={`${bYekan.className} flex min-h-dvh w-screen grid-rows-[auto_1fr_auto] flex-col overflow-x-hidden`}
       >
-        <Navbar />
+        <NavbarProvider />
         <ToastProvider>{children}</ToastProvider>
         <Footer />
       </body>

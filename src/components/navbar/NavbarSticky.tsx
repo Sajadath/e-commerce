@@ -1,16 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Ref } from "react";
 import Menu from "./menu/Menu";
-import NavbarLink from "./NavbarLink";
+import Image from "next/image";
 import NavIcons from "./NavIcons";
 import SearchBar from "./SearchBar";
+import NavbarLink from "./NavbarLink";
+import { motion } from "motion/react";
 
-function Navbar({ navbarRef }: { navbarRef: Ref<HTMLDivElement> | null }) {
+function NavbarSticky() {
   return (
-    <nav
-      ref={navbarRef}
-      className="top-0 right-0 left-0 z-50 h-20 border-b-1 border-gray-100/50 bg-white/70 px-4 py-4 shadow-xs backdrop-blur-xs md:px-8 lg:px-16 xl:px-32 2xl:px-64"
+    <motion.nav
+      initial={{ opacity: 0, translateY: -100 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      exit={{ opacity: 0, translateY: -100 }}
+      className="fixed top-0 right-0 left-0 z-50 h-20 border-b-1 border-gray-100/50 bg-white/70 px-4 py-4 shadow-xs backdrop-blur-xs md:px-8 lg:px-16 xl:px-32 2xl:px-64"
     >
       {/* Mobile Navbar */}
       <div className="flex h-full items-center justify-between md:hidden">
@@ -45,8 +47,8 @@ function Navbar({ navbarRef }: { navbarRef: Ref<HTMLDivElement> | null }) {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
-export default Navbar;
+export default NavbarSticky;
