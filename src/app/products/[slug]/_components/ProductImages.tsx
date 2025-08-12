@@ -15,7 +15,7 @@ function ProductImages({ imagesArray }: { imagesArray: ImagesArray }) {
   const [imageIsLoading, setImageIsLoading] = useState(true);
 
   return (
-    <section className="top-0 mt-2 h-max w-full max-w-screen lg:sticky lg:w-1/2">
+    <section className="top-10 mt-2 h-max w-full max-w-screen lg:sticky lg:w-1/2">
       <div className="w-full">
         <div className="relative h-[500px]">
           <div

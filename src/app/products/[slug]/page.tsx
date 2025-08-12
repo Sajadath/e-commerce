@@ -10,7 +10,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
   return (
-    <main className="flex max-w-screen flex-col gap-16 px-2 md:px-3 lg:flex-row lg:px-5 xl:px-6 2xl:px-7">
+    <main className="flex max-w-screen flex-col gap-8 px-3 md:px-5 lg:flex-row lg:px-8 xl:px-10 2xl:px-7">
       <Suspense fallback={<ProductSkeleton />}>
         <Product ProductId={slug} />
       </Suspense>
