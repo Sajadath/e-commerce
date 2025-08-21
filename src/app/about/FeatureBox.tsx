@@ -24,7 +24,7 @@ function FeatureBox({
       onMouseEnter={() => setBeingHovered(true)}
       onMouseLeave={() => setBeingHovered(false)}
       key={feature.title}
-      className={`relative flex grow flex-col items-center rounded-2xl bg-white p-6 text-center shadow-lg transition-transform hover:scale-105 ${beingHovered ? "z-10" : "z-0"} ${
+      className={`relative flex grow flex-col items-center rounded-2xl border-2 border-white/70 bg-black/10 p-6 text-center shadow-lg shadow-white backdrop-blur-sm transition-all hover:shadow-2xl ${beingHovered ? "z-10" : "z-0"} ${
         feature.grow ? "grow" : ""
       }`}
       initial="hidden"
@@ -36,11 +36,11 @@ function FeatureBox({
       <span className="absolute top-0 left-0 mb-3 block -translate-x-1/2 -translate-y-1/2 -rotate-15 text-5xl">
         {feature.icon}
       </span>
-      <h3 className="text-lightred mb-2 text-lg font-bold text-nowrap">
+      <h3 className="mb-2 text-lg font-bold text-nowrap text-white">
         {feature.title}
       </h3>
 
-      <p className="text-base font-medium text-gray-700">{feature.desc}</p>
+      <p className="text-base font-medium text-gray-100">{feature.desc}</p>
     </motion.div>
   );
 }

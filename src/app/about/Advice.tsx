@@ -1,6 +1,6 @@
 function Advice() {
   return (
-    <section className="my-10 space-y-3 text-center">
+    <section className="my-7 space-y-3 text-center lg:my-10">
       <h2 className="text-lightred text-xl font-bold">
         وَست شاپر، فروشگاهی بی کران
       </h2>

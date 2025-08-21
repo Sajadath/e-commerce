@@ -4,8 +4,8 @@ import FeatureBox from "./FeatureBox";
 
 const features = [
   {
-    title: "ارسال سریع و رایگان",
-    desc: "تحویل کالا در کمترین زمان و بدون هزینه ارسال برای سفارش‌های خاص.",
+    title: "ارسال سریع  ",
+    desc: "تحویل کالا در کمترین زمان و بدون هزینه اضافی ارسال برای سفارش‌ها.",
     icon: "🚚",
     grow: false,
   },
@@ -44,12 +44,26 @@ function Features() {
           وَست شاپر
         </span>
       </motion.div>
-      <div className="via-lightred w-full bg-gradient-to-r from-transparent to-transparent">
-        <div className="mx-auto max-w-5xl rounded-lg px-4 py-5 md:px-5">
-          <div className="flex flex-wrap items-center justify-center gap-6 py-3">
-            {features.map((feature, i) => (
-              <FeatureBox key={feature.title} feature={feature} i={i} />
-            ))}
+      <div
+        style={{
+          backgroundImage: "url('/aestheticshop.jpeg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          objectFit: "contain",
+        }}
+        className="relative w-full px-4 py-20"
+      >
+        <div className="absolute top-0 right-0 left-0 h-14 w-full bg-gradient-to-b from-white via-white to-transparent" />
+        <div className="absolute right-0 bottom-0 left-0 h-14 w-full bg-gradient-to-t from-white via-white to-transparent" />
+        <div className="mx-auto h-full w-fit rounded-3xl border-2 border-white">
+          <div className="mx-auto max-w-5xl rounded-lg px-4 py-5 md:px-8">
+            <div className="flex flex-wrap items-center justify-center gap-6 py-3">
+              {features.map((feature, i) => (
+                <FeatureBox key={feature.title} feature={feature} i={i} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -26,6 +26,7 @@
     "react-loading-skeleton": "^3.5.0",
     "react-lottie": "^1.2.10",
     "react-toastify": "^11.0.5",
+    "zod": "^4.0.17",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
