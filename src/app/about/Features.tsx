@@ -31,7 +31,7 @@ const features = [
 
 function Features() {
   return (
-    <section className="mt-15 w-full">
+    <section className="mt-15 w-full max-w-screen overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, x: -25 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -51,7 +51,6 @@ function Features() {
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
-          objectFit: "contain",
         }}
         className="relative w-full px-4 py-20"
       >

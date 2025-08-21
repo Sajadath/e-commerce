@@ -16,7 +16,7 @@ function GetToKnow() {
         </p>
       </div>
 
-      <div className="relative overflow-hidden rounded-xl">
+      <div className="relative w-full overflow-hidden rounded-xl">
         <Image
           src={getToKnowImg}
           alt="Get to Know Us"
