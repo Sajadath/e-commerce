@@ -4,7 +4,10 @@ import getToKnowImg from "./getToKnow.jpg";
 function GetToKnow() {
   return (
     <section className="my-3 grid max-w-5xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:px-8">
-      <div className="flex h-full w-full flex-col items-center justify-center">
+      <div
+        id="organization"
+        className="flex h-full w-full flex-col items-center justify-center"
+      >
         <h1 className="mb-4 text-center text-xl font-bold sm:text-2xl">
           <span className="text-lightred px-1">وَست شاپر</span>
           رو بیشتر بشناسید

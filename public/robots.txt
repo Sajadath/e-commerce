@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://shopper.sajadath.ir/sitemap.xml
+Host: https://shopper.sajadath.ir
+
+# Crawl delay and disallowed paths (adjust as needed)
+Crawl-delay: 5
+Disallow: /api/private/
