@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Shopper",
-    description: "وبسایتی برای خرید آنلاین.",
+    description: "وبسایتی برای خرید محصولات آنلاین به راحتی یک کلیک.",
     url: "https://shopper.sajadath.ir",
     siteName: "Shopper",
     images: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Shopper",
-    description: "وبسایتی برای خرید آنلاین.",
+    description: "وبسایتی برای خرید محصولات آنلاین به راحتی یک کلیک.",
     images: ["https://shopper.sajadath.ir/og-image.png"],
     site: "@sajadath1",
     creator: "@sajadath1",
