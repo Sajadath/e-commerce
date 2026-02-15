@@ -1,11 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState } from "react";
+import slideImage1 from "@/../public/slider1.jpeg"
+import slideImage2 from "@/../public/slider2.jpeg"
+import slideImage3 from "@/../public/slider3.jpeg"
 
 interface Slide {
   id: number;
-  backgroundImage: string;
+  backgroundImage: StaticImageData;
   asideBg: string;
   title: string;
 }
@@ -13,20 +16,20 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    backgroundImage: "/slider1.jpeg",
+    backgroundImage: slideImage1,
     asideBg: "bg-gradient-to-tr from-yellow-50 to-pink-50",
     title: "هرمدلی واسه هر استایلی",
   },
   {
     id: 2,
-    backgroundImage: "/slider2.jpeg",
+    backgroundImage: slideImage2,
     asideBg: "bg-gradient-to-tr from-blue-50 to-yellow-50",
     title: "تجربه ای طلایی از خرید",
   },
 
   {
     id: 3,
-    backgroundImage: "/slider3.jpeg",
+    backgroundImage: slideImage3,
     asideBg: "bg-gradient-to-tr from-pink-50 to-blue-50",
     title: "کیفیتی تکرار نشدنی",
   },
@@ -114,6 +117,7 @@ const CustomCarousel: React.FC = () => {
                   className="h-full w-full object-cover"
                   src={slide.backgroundImage}
                   alt={`Slide ${slide.id}`}
+                  placeholder="blur"
                 />
               </div>
               <div

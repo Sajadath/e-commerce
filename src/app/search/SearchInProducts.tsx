@@ -81,7 +81,7 @@ async function SearchInProducts(
       console.log("error fetching products", error);
 
       return (
-        <div className="mx-auto my-5 w-full border-b-2 border-red-500 bg-red-300/50 px-10 py-15 text-center">
+        <div className="mx-auto my-5 w-full border-b-4 border-red-500 bg-red-300/10 px-10 py-15 text-center">
           <p className="w-full text-2xl font-semibold">
             خطا در بارگذاری محصولات
           </p>

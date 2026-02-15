@@ -54,8 +54,6 @@ function Features() {
         }}
         className="relative w-full px-4 py-20"
       >
-        <div className="absolute top-0 right-0 left-0 h-14 w-full bg-gradient-to-b from-white via-white to-transparent" />
-        <div className="absolute right-0 bottom-0 left-0 h-14 w-full bg-gradient-to-t from-white via-white to-transparent" />
         <div className="mx-auto h-full w-fit rounded-3xl border-2 border-white">
           <div className="mx-auto max-w-5xl rounded-lg px-4 py-5 md:px-8">
             <div className="flex flex-wrap items-center justify-center gap-6 py-3">
