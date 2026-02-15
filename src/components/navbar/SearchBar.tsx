@@ -79,7 +79,7 @@ function SearchBar() {
         className={`relative rounded-md bg-gray-100 p-2 transition-all duration-500 ${inputFocused ? "w-full border border-black/20" : "w-[80%] border-none"}`}
       >
         <input
-          onFocus={() => setInputFocused(true)}
+          onClick={() => setInputFocused(true)}
           type="text"
           name="searchBar"
           defaultValue={productNameSearch}

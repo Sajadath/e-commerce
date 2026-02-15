@@ -34,9 +34,6 @@ function RangeInput({
     if (e.target.value) {
       const num = faToNumber(e.target.value);
       if (isNaN(num)) {
-        console.log(num);
-        console.log("nan");
-
         return;
       }
       if (num < minPrice) {
@@ -55,6 +52,7 @@ function RangeInput({
       <div dir="rtl" className="flex items-center gap-1 text-sm font-medium">
         <span>{label === "minPrice" ? "از" : "تا"}</span>
         <input
+          dir="ltr"
           type="text"
           name={`${inputName}Number`}
           onBlur={() => {
@@ -72,7 +70,7 @@ function RangeInput({
             }
           }}
           inputMode="numeric"
-          className="block w-24 border-b border-gray-300 pr-2 pb-1 text-xs font-bold outline-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
+          className="block h-full w-fit border-b border-gray-300 pb-1 pl-1 text-xs font-bold outline-none focus:ring-0 focus:ring-offset-0 focus:outline-none"
           max={maxPrice}
           min={minPrice}
           value={value[label].toLocaleString("fa-IR")}
@@ -82,9 +80,9 @@ function RangeInput({
           <Image
             src="/toman.svg"
             alt="تومان"
-            width={20}
-            height={20}
-            className="inline h-5 w-5 align-middle"
+            width={25}
+            height={25}
+            className="inline align-middle"
           />
         </span>
       </div>
