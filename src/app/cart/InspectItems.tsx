@@ -1,9 +1,12 @@
 import ToomanIcon from "@/components/homePage/product/ToomanIcon";
+import AnimateNumber from "@/components/ui/AnimateNumber";
 import Quantity from "@/components/ui/Quantity";
 import { type CartItem } from "@/stores/cartStore";
 import Image from "next/image";
 
 function InspectItems({ cartItems }: { cartItems: CartItem[] }) {
+  console.log(cartItems);
+
   return (
     <div className="p-6">
       <div className="mx-auto max-w-6xl space-y-6">
@@ -45,9 +48,12 @@ function InspectItems({ cartItems }: { cartItems: CartItem[] }) {
           <div className="flex items-center justify-center gap-2">
             <p className="text-lg font-semibold text-gray-800">
               <span className="px-2"> مجموع:</span>
-              {cartItems
-                .reduce((total, item) => total + item.price, 0)
-                .toLocaleString("fa-Ir")}
+              <AnimateNumber
+                value={cartItems.reduce(
+                  (total, item) => total + item.price * item.quantity,
+                  0,
+                )}
+              />
             </p>
             <ToomanIcon />
           </div>
